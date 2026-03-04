@@ -1,4 +1,6 @@
 <script>
+	import { modalOpen } from '$lib/stores/ui.js';
+
 	let scrolled = $state(false);
 	let menuOpen = $state(false);
 
@@ -11,6 +13,11 @@
 	function scrollTo(id) {
 		menuOpen = false;
 		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+	}
+
+	function openModal() {
+		menuOpen = false;
+		$modalOpen = true;
 	}
 </script>
 
@@ -36,10 +43,64 @@
 			<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 		</svg>
 	</button>
-	<button onclick={() => scrollTo('work')}><span>Digital</span></button>
-	<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
-	<button onclick={() => scrollTo('about')}><span>About</span></button>
-	<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
+
+	<div class="overlay-nav">
+		<button onclick={() => scrollTo('work')}><span>Digital</span></button>
+		<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
+		<button onclick={() => scrollTo('about')}><span>About</span></button>
+		<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
+	</div>
+
+	<div class="overlay-bottom">
+		<div class="overlay-contact">
+			<a href="mailto:hello@thesquirrelmedia.com">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M4 4h16v16H4V4zm0 0l8 8 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				hello@thesquirrelmedia.com
+			</a>
+			<a href="tel:+15142481548">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6.6 10.8a15.2 15.2 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				+1 (514) 248 1548
+			</a>
+		</div>
+
+		<div class="overlay-socials">
+			<a href="https://instagram.com/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Instagram">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+					<rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.5"/>
+					<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+					<circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+				</svg>
+			</a>
+			<a href="https://behance.net/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Behance">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+					<path d="M9 12H3V6h5.5a2.5 2.5 0 010 5H9m0 0H3v6h6a3 3 0 000-6H9m9-5h-4m0 0V7m0-2h4M15 12a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+			<a href="https://dribbble.com/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Dribbble">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+					<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+					<path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+				</svg>
+			</a>
+			<a href="https://linkedin.com/company/thesquirrelmedia" target="_blank" rel="noopener" aria-label="LinkedIn">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+					<rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+					<path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4m0-4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+		</div>
+
+		<button class="overlay-cta" onclick={openModal}>
+			Let us Collaborate
+			<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+				<path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
+	</div>
 </div>
 
 <style>
@@ -150,8 +211,8 @@
 			-webkit-backdrop-filter: blur(20px);
 			flex-direction: column;
 			align-items: center;
-			justify-content: center;
-			gap: 8px;
+			justify-content: space-between;
+			padding: 80px 32px 48px;
 			opacity: 0;
 			pointer-events: none;
 			transition: opacity 0.3s ease;
@@ -160,19 +221,87 @@
 			opacity: 1;
 			pointer-events: auto;
 		}
-		.mobile-overlay button:not(.close-btn) {
+
+		.overlay-nav {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 4px;
+		}
+		.overlay-nav button {
 			background: none;
 			border: none;
 			color: var(--color-text-muted);
 			font-family: var(--font);
 			font-size: 1.5rem;
 			font-weight: 700;
-			padding: 16px 32px;
+			padding: 14px 32px;
 			cursor: pointer;
 			transition: color 0.2s ease;
 		}
-		.mobile-overlay button:not(.close-btn):hover {
+		.overlay-nav button:hover {
 			color: var(--color-accent);
+		}
+
+		.overlay-bottom {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 24px;
+			width: 100%;
+		}
+
+		.overlay-contact {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
+		.overlay-contact a {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			color: var(--color-text-muted);
+			text-decoration: none;
+			font-size: 0.9rem;
+			transition: color 0.2s ease;
+		}
+		.overlay-contact a:hover {
+			color: var(--color-text);
+		}
+
+		.overlay-socials {
+			display: flex;
+			gap: 20px;
+		}
+		.overlay-socials a {
+			color: var(--color-text-dim);
+			text-decoration: none;
+			transition: color 0.2s ease;
+		}
+		.overlay-socials a:hover {
+			color: var(--color-accent);
+		}
+
+		.overlay-cta {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			padding: 16px 36px;
+			border: 1.5px solid rgba(168, 85, 247, 0.45);
+			border-radius: 999px;
+			color: var(--color-accent);
+			font-family: var(--font);
+			font-size: 1rem;
+			font-weight: 700;
+			cursor: pointer;
+			background: rgba(168, 85, 247, 0.06);
+			transition: all 0.3s ease;
+		}
+		.overlay-cta:hover {
+			background: var(--color-accent);
+			border-color: var(--color-accent);
+			color: #fff;
 		}
 		.close-btn {
 			position: absolute;
