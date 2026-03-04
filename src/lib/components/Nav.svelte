@@ -1,0 +1,165 @@
+<script>
+	let scrolled = $state(false);
+	let menuOpen = $state(false);
+
+	$effect(() => {
+		const onScroll = () => scrolled = window.scrollY > 50;
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	});
+
+	function scrollTo(id) {
+		menuOpen = false;
+		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+	}
+</script>
+
+<nav class:scrolled>
+	<div class="nav-inner container">
+		<button class="nav-toggle" class:open={menuOpen} onclick={() => menuOpen = !menuOpen} aria-label="Menu">
+			<span></span><span></span><span></span>
+		</button>
+
+		<div class="nav-links" class:open={menuOpen}>
+			{#if menuOpen}
+				<button class="close-btn" onclick={() => menuOpen = false} aria-label="Close menu">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+				</button>
+			{/if}
+			<button onclick={() => scrollTo('work')}>Work</button>
+			<button onclick={() => scrollTo('branding')}>Branding</button>
+			<button onclick={() => scrollTo('about')}>About</button>
+			<button onclick={() => scrollTo('contact')}>Contact</button>
+		</div>
+	</div>
+</nav>
+
+<style>
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		padding: 20px 0;
+		transition: all 0.4s ease;
+	}
+	nav.scrolled {
+		padding: 12px 0;
+		background: rgba(10, 10, 10, 0.85);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.nav-inner {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: 8px;
+	}
+	.nav-links button:not(.close-btn) {
+		background: none;
+		border: none;
+		color: var(--color-text-muted);
+		font-family: var(--font);
+		font-size: 0.82rem;
+		font-weight: 500;
+		padding: 8px 16px;
+		cursor: pointer;
+		transition: color var(--ease);
+		border-radius: 999px;
+	}
+	.nav-links button:not(.close-btn):hover {
+		color: var(--color-text);
+		background: rgba(255,255,255,0.05);
+	}
+
+	.nav-toggle {
+		display: none;
+		flex-direction: column;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 8px;
+	}
+	.nav-toggle span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background: var(--color-text);
+		border-radius: 2px;
+		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+		            opacity 0.2s ease,
+		            width 0.3s ease;
+	}
+	.nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+	.nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
+	.nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+	@media (max-width: 768px) {
+		.nav-toggle { display: flex; }
+		.nav-inner { justify-content: space-between; }
+		.nav-links {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(10, 10, 10, 0.97);
+			backdrop-filter: blur(20px);
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+		}
+		.nav-links.open {
+			opacity: 1;
+			pointer-events: auto;
+		}
+		.nav-links button:not(.close-btn) {
+			font-size: 1.5rem;
+			font-weight: 700;
+			padding: 16px 32px;
+		}
+		.close-btn {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+			z-index: 10;
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			border: 1px solid rgba(255,255,255,0.15) !important;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 !important;
+			font-size: 1rem;
+			color: var(--color-text-muted);
+			background: none;
+			cursor: pointer;
+			animation: popIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+			transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+		}
+		.close-btn:hover {
+			color: var(--color-text);
+			border-color: rgba(255,255,255,0.4) !important;
+			background: rgba(255,255,255,0.08) !important;
+		}
+		@keyframes popIn {
+			from { opacity: 0; transform: scale(0.6) rotate(-90deg); }
+			to   { opacity: 1; transform: scale(1) rotate(0deg); }
+		}
+	}
+</style>
