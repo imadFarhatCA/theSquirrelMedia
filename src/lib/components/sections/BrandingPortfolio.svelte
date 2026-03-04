@@ -22,73 +22,61 @@
 	const stationery = [
 		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg', alt: 'Equipe Farès Envelope & Letterhead' },
 	];
+
+	const categories = [
+		{ label: 'Logo Design', items: logos, logos: true },
+		{ label: 'Business Cards', items: cards, logos: false },
+		{ label: 'Stationery', items: stationery, logos: false },
+	];
 </script>
 
 <section id="branding">
-	<div class="container">
 
-		<!-- Header -->
-		<div class="section-header">
-			<span class="section-tag tag-in" use:inview>Branding</span>
-			<h2 class="heading-in" use:inview>
-				<span class="lw"><span class="lt">Identity that</span></span>
-				<span class="lw"><span class="lt"><em class="accent">speaks</em>.</span></span>
-			</h2>
-			<p class="section-desc para-in" use:inview={{ delay: 300 }}>
-				From concept to execution — logos, print, and stationery that carry your brand everywhere.
-			</p>
-		</div>
-
-		<!-- Logos -->
-		<div class="category cat-in" use:inview>
-			<h3 class="cat-label">Logo Design</h3>
-			<div class="logos-grid">
-				{#each logos as logo, i}
-					<div class="logo-card" style="--i:{i}" use:inview={{ delay: i * 60 }}>
-						<img src={logo.src} alt={logo.alt} loading="lazy" />
-					</div>
-				{/each}
-			</div>
-		</div>
-
-		<!-- Business Cards -->
-		<div class="category cat-in" use:inview>
-			<h3 class="cat-label">Business Cards</h3>
-			<div class="cards-grid">
-				{#each cards as card, i}
-					<div class="print-card" style="--i:{i}" use:inview={{ delay: i * 100 }}>
-						<img src={card.src} alt={card.alt} loading="lazy" />
-					</div>
-				{/each}
-			</div>
-		</div>
-
-		<!-- Letterhead / Stationery -->
-		<div class="category cat-in" use:inview>
-			<h3 class="cat-label">Stationery</h3>
-			<div class="stationery-grid">
-				{#each stationery as item}
-					<div class="print-card wide" use:inview>
-						<img src={item.src} alt={item.alt} loading="lazy" />
-					</div>
-				{/each}
-			</div>
-		</div>
-
+	<!-- Section header — full container -->
+	<div class="container section-header">
+		<span class="section-tag tag-in" use:inview>Branding</span>
+		<h2 class="heading-in" use:inview>
+			<span class="lw"><span class="lt">Identity that</span></span>
+			<span class="lw"><span class="lt"><em class="accent">speaks</em>.</span></span>
+		</h2>
+		<p class="section-desc para-in" use:inview={{ delay: 300 }}>
+			From concept to execution — logos, print, and stationery that carry your brand everywhere.
+		</p>
 	</div>
+
+	<!-- Categories -->
+	{#each categories as cat, ci}
+		<div class="cat-row" use:inview>
+			<!-- Category label row -->
+			<div class="container cat-meta">
+				<span class="cat-name">{cat.label}</span>
+				<span class="cat-count">{String(cat.items.length).padStart(2, '0')}</span>
+			</div>
+
+			<!-- Horizontal scroll strip — bleeds edge to edge -->
+			<div class="strip-wrap">
+				<div class="strip" class:logo-strip={cat.logos}>
+					{#each cat.items as item, i}
+						<div class="strip-item" style="--i:{i}">
+							<img src={item.src} alt={item.alt} loading="lazy" />
+						</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+	{/each}
+
 </section>
 
 <style>
 	section { padding: var(--section-pad) 0; }
 
 	/* ── Header ─────────────────────────────── */
-	.section-header { margin-bottom: 72px; }
+	.section-header { margin-bottom: 80px; }
 
 	.tag-in:global(.inview-ready) {
-		opacity: 0;
-		transform: translateY(-18px) scale(0.88);
-		transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-		            transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+		opacity: 0; transform: translateY(-18px) scale(0.88);
+		transition: opacity 0.5s cubic-bezier(0.34,1.56,0.64,1), transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
 	}
 	.tag-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0) scale(1); }
 
@@ -100,126 +88,100 @@
 		flex-direction: column;
 	}
 	.lw { display: block; overflow: hidden; padding-bottom: 0.06em; }
-	.lt {
-		display: block;
-		transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-	}
+	.lt { display: block; transition: transform 1s cubic-bezier(0.16,1,0.3,1); }
 	.lw:nth-child(2) .lt { transition-delay: 0.1s; }
 
-	.heading-in:global(.inview-ready) .lt {
-		transform: translateY(115%) skewY(6deg);
-		transform-origin: left bottom;
-	}
+	.heading-in:global(.inview-ready) .lt { transform: translateY(115%) skewY(6deg); transform-origin: left bottom; }
 	.heading-in:global(.inview-ready.visible) .lt { transform: translateY(0) skewY(0deg); }
 
 	.accent { font-style: normal; color: var(--color-accent); }
 
 	.section-desc {
-		font-size: 1rem;
-		max-width: 520px;
-		transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+		font-size: 1rem; max-width: 520px;
+		transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.8s ease;
 	}
 	.para-in:global(.inview-ready) { opacity: 0; transform: translateY(24px); filter: blur(4px); }
 	.para-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-	/* ── Category blocks ─────────────────────── */
-	.category { margin-bottom: 72px; }
-
-	.cat-in {
-		transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+	/* ── Category row ────────────────────────── */
+	.cat-row {
+		margin-bottom: 80px;
+		transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
 	}
-	.cat-in:global(.inview-ready) { opacity: 0; transform: translateY(40px); }
-	.cat-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); }
+	.cat-row:global(.inview-ready) { opacity: 0; transform: translateY(50px); }
+	.cat-row:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); }
 
-	.cat-label {
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--color-text-dim);
-		margin-bottom: 24px;
-		padding-bottom: 16px;
+	.cat-meta {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		padding-bottom: 18px;
+		margin-bottom: 20px;
 		border-bottom: 1px solid var(--color-border);
 	}
 
-	/* ── Logos grid ──────────────────────────── */
-	.logos-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2px;
+	.cat-name {
+		font-size: clamp(1.4rem, 3vw, 2.2rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--color-text);
 	}
 
-	.logo-card {
-		background: var(--color-surface);
-		overflow: hidden;
-		aspect-ratio: 4/3;
+	.cat-count {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		color: var(--color-accent);
+	}
+
+	/* ── Horizontal strip ────────────────────── */
+	.strip-wrap {
+		overflow-x: auto;
+		overflow-y: visible;
+		scrollbar-width: none;
+		padding: 8px max(5%, calc((100vw - 1400px) / 2));
+	}
+	.strip-wrap::-webkit-scrollbar { display: none; }
+
+	.strip {
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		position: relative;
-		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-	}
-	.logo-card:hover { transform: scale(1.04); z-index: 2; }
-
-	.logo-card img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		padding: 24px;
-		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-	}
-	.logo-card:hover img { transform: scale(1.06); }
-
-	/* rounded corners on corner cells */
-	.logo-card:first-child { border-radius: 12px 0 0 0; }
-	.logo-card:nth-child(3) { border-radius: 0 12px 0 0; }
-	.logo-card:nth-child(7) { border-radius: 0 0 0 12px; }
-	.logo-card:nth-child(9) { border-radius: 0 0 12px 0; }
-
-	/* ── Print cards ─────────────────────────── */
-	.cards-grid,
-	.stationery-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
 		gap: 16px;
+		width: max-content;
 	}
 
-	.print-card {
+	.strip-item {
+		flex: 0 0 auto;
+		width: 320px;
+		height: 220px;
 		border-radius: 12px;
 		overflow: hidden;
 		background: var(--color-surface);
 		cursor: pointer;
-		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+		transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
 		            box-shadow 0.4s ease;
 	}
-	.print-card:hover {
-		transform: scale(1.03) translateY(-4px);
+	.strip-item:hover {
+		transform: scale(1.04) translateY(-6px);
 		box-shadow: 0 24px 60px rgba(0,0,0,0.5);
 	}
-	.print-card.wide { grid-column: span 2; }
 
-	.print-card img {
+	.strip-item img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+		transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
 	}
-	.print-card:hover img { transform: scale(1.04); }
+	.strip-item:hover img { transform: scale(1.06); }
+
+	/* Logo strip: contain so logos aren't cropped */
+	.logo-strip .strip-item img {
+		object-fit: contain;
+		padding: 24px;
+	}
 
 	/* ── Mobile ──────────────────────────────── */
 	@media (max-width: 768px) {
-		.logos-grid { grid-template-columns: repeat(2, 1fr); }
-		.logo-card:first-child { border-radius: 12px 0 0 0; }
-		.logo-card:nth-child(2) { border-radius: 0 12px 0 0; }
-		.logo-card:nth-child(3),
-		.logo-card:nth-child(7) { border-radius: 0; }
-		.logo-card:nth-child(8) { border-radius: 0 0 12px 0; }
-		.logo-card:nth-child(9) { border-radius: 0 0 12px 12px; }
-
-		.cards-grid,
-		.stationery-grid { grid-template-columns: 1fr; }
-		.print-card.wide { grid-column: span 1; }
+		.strip-item { width: 240px; height: 170px; }
 	}
 </style>
