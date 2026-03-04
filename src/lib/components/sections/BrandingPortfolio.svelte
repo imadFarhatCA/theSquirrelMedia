@@ -58,7 +58,7 @@
 			label: 'Photography',
 			items: photography,
 			logo: false,
-			cols: 2,
+			cols: 1,
 			tags: ['#ProductPhotography', '#JewelleryPhotography', '#ArtDirection', '#CommercialPhoto'],
 		},
 		{
@@ -283,9 +283,11 @@
 
 	/* ── Mobile ──────────────────────────────── */
 	@media (max-width: 640px) {
-		.reveal-grid:not(.logo-grid) { grid-template-columns: repeat(2, 1fr) !important; }
-		/* Logo grid stays 3-col — squares are small enough */
+		/* All grids collapse to 2-col, including logos */
+		.reveal-grid { grid-template-columns: repeat(2, 1fr) !important; }
 		.reveal-grid:not(.logo-grid) { grid-auto-rows: 180px; }
+		/* Single-col items (photography, wearables) stay full-width */
+		.reveal-grid[style*="--cols:1"] { grid-template-columns: 1fr !important; }
 		/* Always reveal on mobile */
 		.cell img { filter: grayscale(0) brightness(0.85) blur(0); transform: scale(1); }
 		.overlay { opacity: 1; }
