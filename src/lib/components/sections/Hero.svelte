@@ -113,8 +113,8 @@
 	}
 
 	@keyframes iconFloat {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-8px); }
+		0%, 100% { transform: scale(1); opacity: 0.8; }
+		50% { transform: scale(1.12); opacity: 1; }
 	}
 
 	.logo-full {
