@@ -116,22 +116,22 @@
 		display: flex;
 		gap: 24px;
 		padding: 32px 0;
-		transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-		            transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+		transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+		            transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	/* Odd items from left, even from right */
+	/* Odd from left, even from right — dramatic */
 	.service-item:global(.inview-ready) {
 		opacity: 0;
-		transform: translateX(-70px);
+		transform: translateX(-140px) skewX(-6deg) scale(0.95);
 	}
 	.service-item:nth-child(even):global(.inview-ready) {
-		transform: translateX(70px);
+		transform: translateX(140px) skewX(6deg) scale(0.95);
 	}
 	.service-item:global(.inview-ready.visible),
 	.service-item:nth-child(even):global(.inview-ready.visible) {
 		opacity: 1;
-		transform: translateX(0);
+		transform: translateX(0) skewX(0deg) scale(1);
 	}
 
 	/* Wipe line — drawn via ::before pseudo */
@@ -180,8 +180,8 @@
 		.about-text { position: static; }
 		h2 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
 
-		.service-item:global(.inview-ready) { transform: translateX(-40px); }
-		.service-item:nth-child(even):global(.inview-ready) { transform: translateX(40px); }
-		.service-item:nth-child(even):global(.inview-ready.visible) { transform: translateX(0); }
+		.service-item:global(.inview-ready) { transform: translateX(-80px) skewX(-4deg) scale(0.95); }
+		.service-item:nth-child(even):global(.inview-ready) { transform: translateX(80px) skewX(4deg) scale(0.95); }
+		.service-item:nth-child(even):global(.inview-ready.visible) { transform: translateX(0) skewX(0deg) scale(1); }
 	}
 </style>
