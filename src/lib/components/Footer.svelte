@@ -17,6 +17,7 @@
 		'Healthcare',
 		'Real Estate',
 		'Retail & E-commerce',
+		'Home & Renovation',
 	];
 </script>
 
