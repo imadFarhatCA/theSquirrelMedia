@@ -85,9 +85,9 @@
 					<circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
 				</svg>
 			</a>
-			<a href="https://behance.net/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Behance">
-				<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M7.5 11c1.38 0 2.5-.67 2.5-2.19C10 7.26 8.88 6.5 7.5 6.5H3v9h4.5c1.62 0 3-1.01 3-2.81 0-1.54-1.07-2.69-3-2.69zM5 8h2.5c.55 0 1 .45 1 1s-.45 1-1 1H5V8zm2.5 6H5v-2.5h2.5c.83 0 1.5.52 1.5 1.25S8.33 14 7.5 14zM15.5 6.5h5v1.5h-5zM18 10c-2.76 0-4 2.02-4 4.15 0 2.42 1.52 4.35 4 4.35 2.01 0 3.24-1.01 3.72-2.93h-1.87c-.18.58-.82 1.13-1.72 1.13-1.23 0-2.04-.83-2.13-2.07h5.87c.08-2.39-1.14-4.63-3.87-4.63zm-1.96 3.31c.17-1 .95-1.68 1.96-1.68 1.08 0 1.72.65 1.88 1.68h-3.84z"/>
+			<a href="https://facebook.com/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Facebook">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
 				</svg>
 			</a>
 			<a href="https://dribbble.com/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Dribbble">
