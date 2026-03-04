@@ -4,13 +4,12 @@
 	const logos = [
 		{ src: '/portfolioSamples/brandIdentity/LAM%20-%20Lydia%20Tanios%20earthycolor.jpg',   name: 'LAM — Lydia Tanios'         },
 		{ src: '/portfolioSamples/brandIdentity/Semolina%20LogoBranding.jpg',                   name: 'Semolina'                   },
-		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%201.jpg',                          name: 'Siralloc'                   },
 		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%202.jpg',                          name: 'Siralloc'                   },
 		{ src: '/portfolioSamples/brandIdentity/el-Hage%20Assurances%20newLogo.jpg',            name: 'el-Hage Assurances'         },
 		{ src: '/portfolioSamples/brandIdentity/it%20is%20Thyme%20-%20logo.jpg',                name: 'it is Thyme'                },
 		{ src: '/portfolioSamples/brandIdentity/majdalani-logo.jpg',                            name: 'Majdalani'                  },
 		{ src: '/portfolioSamples/brandIdentity/oceanFrontier%20consultingLogo.jpg',            name: 'Ocean Frontier Consulting'  },
-		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.svg',                    name: 'Troika Insurance'           },
+		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.jpg',                    name: 'Troika Insurance'           },
 	];
 
 	const cards = [
@@ -223,7 +222,7 @@
 		width: 100%; height: 100%;
 		object-fit: cover;
 		display: block;
-		filter: grayscale(1) brightness(0.28) blur(3px);
+		filter: grayscale(1) brightness(0.32) blur(1.5px);
 		transform: scale(1.08);
 		transition: filter 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
 	}
