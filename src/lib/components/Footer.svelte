@@ -1,6 +1,4 @@
 <script>
-	import { modalOpen } from '$lib/stores/ui.js';
-
 	const year = new Date().getFullYear();
 
 	const services = [
@@ -24,52 +22,6 @@
 </script>
 
 <footer id="contact">
-
-	<!-- ── CTA Band ── -->
-	<div class="footer-cta container">
-		<div class="cta-left">
-			<span class="cta-tag">Let's build something</span>
-			<h2>Ready to start your<br /><em>next project?</em></h2>
-			<div class="cta-contact">
-				<a href="mailto:hello@thesquirrelmedia.com">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-					hello@thesquirrelmedia.com
-				</a>
-				<a href="tel:+15142481548">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16l.92.92z"/></svg>
-					+1 (514) 248 1548
-				</a>
-			</div>
-			<div class="cta-socials">
-				<a href="#" aria-label="Instagram">
-					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-				</a>
-				<a href="#" aria-label="Behance">
-					<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 11c1.38 0 2.5-.67 2.5-2.19C10 7.26 8.88 6.5 7.5 6.5H3v9h4.5c1.62 0 3-1.01 3-2.81 0-1.54-1.07-2.69-3-2.69zM5 8h2.5c.55 0 1 .45 1 1s-.45 1-1 1H5V8zm2.5 6H5v-2.5h2.5c.83 0 1.5.52 1.5 1.25S8.33 14 7.5 14zM15.5 6.5h5v1.5h-5zM18 10c-2.76 0-4 2.02-4 4.15 0 2.42 1.52 4.35 4 4.35 2.01 0 3.24-1.01 3.72-2.93h-1.87c-.18.58-.82 1.13-1.72 1.13-1.23 0-2.04-.83-2.13-2.07h5.87c.08-2.39-1.14-4.63-3.87-4.63zm-1.96 3.31c.17-1 .95-1.68 1.96-1.68 1.08 0 1.72.65 1.88 1.68h-3.84z"/></svg>
-				</a>
-				<a href="#" aria-label="Dribbble">
-					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6.03 12.24 7.15 18.5"/></svg>
-				</a>
-				<a href="#" aria-label="LinkedIn">
-					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-				</a>
-			</div>
-		</div>
-		<div class="cta-right">
-			<button class="cta-btn" onclick={() => $modalOpen = true}>
-				Let us Collaborate
-				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-					<path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-			</button>
-			<p class="cta-note">No commitment. Just a conversation.</p>
-		</div>
-	</div>
-
-	<!-- ── Divider ── -->
-	<div class="footer-divider container"></div>
-
-	<!-- ── Columns ── -->
 	<div class="container footer-grid">
 		<div class="footer-col brand-col">
 			<div class="footer-logo">
@@ -116,15 +68,19 @@
 			</ul>
 
 			<div class="socials">
+				<!-- Instagram -->
 				<a href="#" aria-label="Instagram">
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
 				</a>
+				<!-- Behance -->
 				<a href="#" aria-label="Behance">
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 11c1.38 0 2.5-.67 2.5-2.19C10 7.26 8.88 6.5 7.5 6.5H3v9h4.5c1.62 0 3-1.01 3-2.81 0-1.54-1.07-2.69-3-2.69zM5 8h2.5c.55 0 1 .45 1 1s-.45 1-1 1H5V8zm2.5 6H5v-2.5h2.5c.83 0 1.5.52 1.5 1.25S8.33 14 7.5 14zM15.5 6.5h5v1.5h-5zM18 10c-2.76 0-4 2.02-4 4.15 0 2.42 1.52 4.35 4 4.35 2.01 0 3.24-1.01 3.72-2.93h-1.87c-.18.58-.82 1.13-1.72 1.13-1.23 0-2.04-.83-2.13-2.07h5.87c.08-2.39-1.14-4.63-3.87-4.63zm-1.96 3.31c.17-1 .95-1.68 1.96-1.68 1.08 0 1.72.65 1.88 1.68h-3.84z"/></svg>
 				</a>
+				<!-- Dribbble -->
 				<a href="#" aria-label="Dribbble">
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6.03 12.24 7.15 18.5"/></svg>
 				</a>
+				<!-- LinkedIn -->
 				<a href="#" aria-label="LinkedIn">
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
 				</a>
@@ -149,130 +105,6 @@
 		padding: 80px 0 0;
 	}
 
-	/* ── CTA Band ── */
-	.footer-cta {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 48px;
-		padding-bottom: 64px;
-		flex-wrap: wrap;
-	}
-
-	.cta-left {
-		display: flex;
-		flex-direction: column;
-		gap: 0;
-	}
-
-	.cta-tag {
-		font-size: 0.75rem;
-		font-weight: 700;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--color-accent);
-		margin-bottom: 14px;
-	}
-
-	.footer-cta h2 {
-		font-size: clamp(2rem, 4vw, 3.2rem);
-		font-weight: 900;
-		letter-spacing: -0.04em;
-		line-height: 1.05;
-		color: var(--color-text);
-		margin-bottom: 28px;
-	}
-	.footer-cta h2 em {
-		font-style: italic;
-		color: var(--color-accent);
-	}
-
-	.cta-contact {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		margin-bottom: 24px;
-	}
-	.cta-contact a {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		font-size: 0.92rem;
-		font-weight: 500;
-		color: var(--color-text-muted);
-		transition: color 0.2s ease;
-	}
-	.cta-contact a:hover { color: var(--color-accent); }
-	.cta-contact svg { flex-shrink: 0; opacity: 0.6; }
-
-	.cta-socials {
-		display: flex;
-		gap: 10px;
-	}
-	.cta-socials a {
-		color: var(--color-text-dim);
-		padding: 8px;
-		border-radius: 8px;
-		border: 1px solid var(--color-border);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: all 0.2s ease;
-	}
-	.cta-socials a:hover {
-		color: var(--color-accent);
-		border-color: var(--color-accent);
-		background: var(--color-accent-glow);
-	}
-
-	.cta-right {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 14px;
-		flex-shrink: 0;
-	}
-
-	.cta-btn {
-		display: inline-flex;
-		align-items: center;
-		gap: 12px;
-		padding: 18px 44px;
-		border: 1.5px solid rgba(168, 85, 247, 0.45);
-		border-radius: 999px;
-		color: var(--color-accent);
-		font-family: inherit;
-		font-size: 1.05rem;
-		font-weight: 700;
-		letter-spacing: 0.02em;
-		cursor: pointer;
-		background: rgba(168, 85, 247, 0.06);
-		transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-	}
-	.cta-btn:hover {
-		background: var(--color-accent);
-		border-color: var(--color-accent);
-		color: #fff;
-		transform: scale(1.04);
-		box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
-	}
-	.cta-btn svg { transition: transform 0.3s ease; }
-	.cta-btn:hover svg { transform: translate(2px, -2px); }
-
-	.cta-note {
-		font-size: 0.76rem;
-		color: var(--color-text-dim);
-		letter-spacing: 0.02em;
-	}
-
-	/* ── Divider ── */
-	.footer-divider {
-		height: 1px;
-		background: var(--color-border);
-		margin-bottom: 64px;
-	}
-
-	/* ── Columns grid ── */
 	.footer-grid {
 		display: grid;
 		grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
@@ -345,7 +177,6 @@
 		background: var(--color-accent-glow);
 	}
 
-	/* ── Bottom bar ── */
 	.footer-bottom {
 		margin-top: 48px;
 		padding: 20px 0;
@@ -376,14 +207,16 @@
 		color: var(--color-text-dim);
 	}
 
-	/* ── Responsive ── */
 	@media (max-width: 768px) {
-		.footer-cta { flex-direction: column; align-items: flex-start; gap: 32px; }
-		.cta-right { align-items: flex-start; }
-		.footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+		.footer-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+		}
 	}
 
 	@media (max-width: 480px) {
-		.footer-grid { grid-template-columns: 1fr; }
+		.footer-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
