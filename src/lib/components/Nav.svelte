@@ -79,36 +79,29 @@
 
 		<div class="overlay-socials">
 			<a href="https://instagram.com/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Instagram">
-				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-					<rect x="2" y="2" width="20" height="20" rx="5"/>
-					<circle cx="12" cy="12" r="4"/>
-					<circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+					<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+					<circle cx="12" cy="12" r="5"/>
+					<circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
 				</svg>
 			</a>
 			<a href="https://behance.net/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Behance">
-				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-					<!-- B letterform: left bar + top bump + bottom bump -->
-					<path d="M4 5v14h6a4 4 0 000-8H4"/>
-					<path d="M4 11h5a3 3 0 000-6H4"/>
-					<!-- Behance signature: bar + circle with midbar -->
-					<path d="M14 8h6"/>
-					<circle cx="17" cy="14" r="3"/>
-					<path d="M14 14h6"/>
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M7.5 11c1.38 0 2.5-.67 2.5-2.19C10 7.26 8.88 6.5 7.5 6.5H3v9h4.5c1.62 0 3-1.01 3-2.81 0-1.54-1.07-2.69-3-2.69zM5 8h2.5c.55 0 1 .45 1 1s-.45 1-1 1H5V8zm2.5 6H5v-2.5h2.5c.83 0 1.5.52 1.5 1.25S8.33 14 7.5 14zM15.5 6.5h5v1.5h-5zM18 10c-2.76 0-4 2.02-4 4.15 0 2.42 1.52 4.35 4 4.35 2.01 0 3.24-1.01 3.72-2.93h-1.87c-.18.58-.82 1.13-1.72 1.13-1.23 0-2.04-.83-2.13-2.07h5.87c.08-2.39-1.14-4.63-3.87-4.63zm-1.96 3.31c.17-1 .95-1.68 1.96-1.68 1.08 0 1.72.65 1.88 1.68h-3.84z"/>
 				</svg>
 			</a>
 			<a href="https://dribbble.com/thesquirrelmedia" target="_blank" rel="noopener" aria-label="Dribbble">
-				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
 					<circle cx="12" cy="12" r="10"/>
-					<!-- seam lines clipped within the ball -->
-					<path d="M9 3c0 5 2 9 3 15"/>
-					<path d="M15 3c0 5-2 9-3 15"/>
-					<path d="M3 11h18"/>
+					<path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/>
+					<path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/>
+					<path d="M8.56 2.75c4.37 6 6.03 12.24 7.15 18.5"/>
 				</svg>
 			</a>
 			<a href="https://linkedin.com/company/thesquirrelmedia" target="_blank" rel="noopener" aria-label="LinkedIn">
-				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-					<rect x="2" y="9" width="4" height="12"/>
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+					<rect width="4" height="12" x="2" y="9"/>
 					<circle cx="4" cy="4" r="2"/>
 				</svg>
 			</a>
