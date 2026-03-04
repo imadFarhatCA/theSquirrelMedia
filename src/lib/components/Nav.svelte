@@ -21,7 +21,7 @@
 		</button>
 
 		<div class="nav-links">
-			<button onclick={() => scrollTo('work')}><span>Work</span></button>
+			<button onclick={() => scrollTo('work')}><span>Digital</span></button>
 			<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
 			<button onclick={() => scrollTo('about')}><span>About</span></button>
 			<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
@@ -36,7 +36,7 @@
 			<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 		</svg>
 	</button>
-	<button onclick={() => scrollTo('work')}><span>Work</span></button>
+	<button onclick={() => scrollTo('work')}><span>Digital</span></button>
 	<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
 	<button onclick={() => scrollTo('about')}><span>About</span></button>
 	<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
