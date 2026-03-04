@@ -128,7 +128,8 @@
 	.service-item:nth-child(even):global(.inview-ready) {
 		transform: translateX(70px);
 	}
-	.service-item:global(.inview-ready.visible) {
+	.service-item:global(.inview-ready.visible),
+	.service-item:nth-child(even):global(.inview-ready.visible) {
 		opacity: 1;
 		transform: translateX(0);
 	}
@@ -181,5 +182,6 @@
 
 		.service-item:global(.inview-ready) { transform: translateX(-40px); }
 		.service-item:nth-child(even):global(.inview-ready) { transform: translateX(40px); }
+		.service-item:nth-child(even):global(.inview-ready.visible) { transform: translateX(0); }
 	}
 </style>
