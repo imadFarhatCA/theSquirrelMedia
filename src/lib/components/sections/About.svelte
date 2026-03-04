@@ -120,13 +120,13 @@
 		            transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	/* Odd from left, even from right — dramatic */
+	/* Odd from left, even from right — extreme */
 	.service-item:global(.inview-ready) {
 		opacity: 0;
-		transform: translateX(-140px) skewX(-6deg) scale(0.95);
+		transform: translateX(-340px) skewX(-10deg) scale(0.9);
 	}
 	.service-item:nth-child(even):global(.inview-ready) {
-		transform: translateX(140px) skewX(6deg) scale(0.95);
+		transform: translateX(340px) skewX(10deg) scale(0.9);
 	}
 	.service-item:global(.inview-ready.visible),
 	.service-item:nth-child(even):global(.inview-ready.visible) {
@@ -180,8 +180,8 @@
 		.about-text { position: static; }
 		h2 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
 
-		.service-item:global(.inview-ready) { transform: translateX(-80px) skewX(-4deg) scale(0.95); }
-		.service-item:nth-child(even):global(.inview-ready) { transform: translateX(80px) skewX(4deg) scale(0.95); }
+		.service-item:global(.inview-ready) { transform: translateX(-200px) skewX(-8deg) scale(0.9); }
+		.service-item:nth-child(even):global(.inview-ready) { transform: translateX(200px) skewX(8deg) scale(0.9); }
 		.service-item:nth-child(even):global(.inview-ready.visible) { transform: translateX(0) skewX(0deg) scale(1); }
 	}
 </style>
