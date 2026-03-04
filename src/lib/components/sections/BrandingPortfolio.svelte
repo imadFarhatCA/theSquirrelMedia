@@ -21,6 +21,16 @@
 
 	const stationery = [
 		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg',               name: 'Equipe Farès'          },
+		{ src: '/portfolioSamples/businessCards/Lam%20letterHead.jpg',                              name: 'LAM — Lydia Tanios'    },
+	];
+
+	const photography = [
+		{ src: '/portfolioSamples/jewleryPhotography/imadFarhat%20artDirector%20008%20Jewerly.jpg', name: 'Jewellery'             },
+		{ src: '/portfolioSamples/productsPhotography/imadFarhat%20artDirector%20005%20photography.jpg', name: 'Products'         },
+	];
+
+	const wearables = [
+		{ src: '/portfolioSamples/wearablesDesign/imadFarhat%20artDirector%20007%20wearables.jpg',  name: 'Wearables'             },
 	];
 
 	const categories = [
@@ -28,7 +38,7 @@
 			label: 'Logo Design',
 			items: logos,
 			logo: true,
-			cols: 3,
+			cols: 4,
 			tags: ['#LogoDesign', '#BrandIdentity', '#VisualIdentity', '#Typography', '#Logomark', '#Wordmark'],
 		},
 		{
@@ -42,8 +52,22 @@
 			label: 'Stationery',
 			items: stationery,
 			logo: false,
-			cols: 1,
+			cols: 2,
 			tags: ['#Letterhead', '#Stationery', '#OfficeDesign', '#CorporateIdentity', '#PrintReady'],
+		},
+		{
+			label: 'Photography',
+			items: photography,
+			logo: false,
+			cols: 2,
+			tags: ['#ProductPhotography', '#JewelleryPhotography', '#ArtDirection', '#CommercialPhoto'],
+		},
+		{
+			label: 'Wearables & Merch',
+			items: wearables,
+			logo: false,
+			cols: 1,
+			tags: ['#Wearables', '#MerchDesign', '#ApparelDesign', '#Branding', '#Lifestyle'],
 		},
 	];
 </script>
@@ -176,7 +200,12 @@
 
 	/* Non-logo grids */
 	.reveal-grid:not(.logo-grid) {
-		grid-auto-rows: 220px;
+		grid-auto-rows: 260px;
+	}
+	/* Wide/single-column grids get taller rows */
+	.reveal-grid[style*="--cols:1"],
+	.reveal-grid[style*="--cols:2"] {
+		grid-auto-rows: 360px;
 	}
 
 	/* ── Cell ────────────────────────────────── */
@@ -194,9 +223,9 @@
 		width: 100%; height: 100%;
 		object-fit: cover;
 		display: block;
-		filter: grayscale(1) brightness(0.28);
-		transform: scale(1.04);
-		transition: filter 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+		filter: grayscale(1) brightness(0.28) blur(3px);
+		transform: scale(1.08);
+		transition: filter 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
 	}
 	/* Logos: contain + tight padding */
 	.cell.logo img {
@@ -205,8 +234,8 @@
 	}
 
 	.cell:hover img {
-		filter: grayscale(0) brightness(1);
-		transform: scale(1.08);
+		filter: grayscale(0) brightness(1) blur(0px);
+		transform: scale(1.04);
 	}
 	.cell.logo:hover img { transform: scale(1.05); }
 
@@ -259,7 +288,7 @@
 		/* Logo grid stays 3-col — squares are small enough */
 		.reveal-grid:not(.logo-grid) { grid-auto-rows: 180px; }
 		/* Always reveal on mobile */
-		.cell img { filter: grayscale(0) brightness(0.85); transform: scale(1); }
+		.cell img { filter: grayscale(0) brightness(0.85) blur(0); transform: scale(1); }
 		.overlay { opacity: 1; }
 	}
 </style>
