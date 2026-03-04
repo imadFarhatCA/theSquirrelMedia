@@ -157,13 +157,13 @@
 	.cta-collab {
 		display: inline-flex;
 		align-items: center;
-		gap: 10px;
-		padding: 14px 32px;
+		gap: 12px;
+		padding: 18px 44px;
 		border: 1.5px solid rgba(168, 85, 247, 0.45);
 		border-radius: 999px;
 		color: var(--color-accent);
 		font-family: inherit;
-		font-size: 0.95rem;
+		font-size: 1.1rem;
 		font-weight: 700;
 		letter-spacing: 0.02em;
 		cursor: pointer;
