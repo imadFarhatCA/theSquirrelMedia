@@ -1,21 +1,50 @@
 <script>
 	import { inview } from '$lib/actions/inview.js';
 
-	// gc = grid-column, gr = grid-row, logo = contain+padding
-	const pieces = [
-		{ src: '/portfolioSamples/brandIdentity/LAM%20-%20Lydia%20Tanios%20earthycolor.jpg',             name: 'LAM — Lydia Tanios',           cat: 'Logo',          gc: '1',          gr: '1',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/Semolina%20LogoBranding.jpg',                             name: 'Semolina',                     cat: 'Logo',          gc: '2 / span 2', gr: '1',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%201.jpg',                                    name: 'Siralloc',                     cat: 'Logo',          gc: '4',          gr: '1',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%202.jpg',                                    name: 'Siralloc',                     cat: 'Logo',          gc: '1',          gr: '2 / span 2', logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/el-Hage%20Assurances%20newLogo.jpg',                      name: 'el-Hage Assurances',           cat: 'Logo',          gc: '2',          gr: '2',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/it%20is%20Thyme%20-%20logo.jpg',                          name: 'it is Thyme',                  cat: 'Logo',          gc: '3 / span 2', gr: '2',          logo: true  },
-		{ src: '/portfolioSamples/businessCards/equipeFares%20businessCard%20simulation%20002.jpg',        name: 'Equipe Farès',                 cat: 'Business Card', gc: '2',          gr: '3',          logo: false },
-		{ src: '/portfolioSamples/brandIdentity/majdalani-logo.jpg',                                      name: 'Majdalani',                    cat: 'Logo',          gc: '3',          gr: '3',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/oceanFrontier%20consultingLogo.jpg',                      name: 'Ocean Frontier Consulting',    cat: 'Logo',          gc: '4',          gr: '3',          logo: true  },
-		{ src: '/portfolioSamples/businessCards/majdalani%20MembershipCards%20simulation.jpg',             name: 'Majdalani',                    cat: 'Business Card', gc: '1 / span 2', gr: '4',          logo: false },
-		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.svg',                              name: 'Troika Insurance',             cat: 'Logo',          gc: '3',          gr: '4',          logo: true  },
-		{ src: '/portfolioSamples/businessCards/troika%20businessCard.jpg',                                name: 'Troika Insurance',             cat: 'Business Card', gc: '4',          gr: '4',          logo: false },
-		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg',                     name: 'Equipe Farès',                 cat: 'Stationery',    gc: '1 / span 4', gr: '5',          logo: false },
+	const logos = [
+		{ src: '/portfolioSamples/brandIdentity/LAM%20-%20Lydia%20Tanios%20earthycolor.jpg',   name: 'LAM — Lydia Tanios'         },
+		{ src: '/portfolioSamples/brandIdentity/Semolina%20LogoBranding.jpg',                   name: 'Semolina'                   },
+		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%201.jpg',                          name: 'Siralloc'                   },
+		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%202.jpg',                          name: 'Siralloc'                   },
+		{ src: '/portfolioSamples/brandIdentity/el-Hage%20Assurances%20newLogo.jpg',            name: 'el-Hage Assurances'         },
+		{ src: '/portfolioSamples/brandIdentity/it%20is%20Thyme%20-%20logo.jpg',                name: 'it is Thyme'                },
+		{ src: '/portfolioSamples/brandIdentity/majdalani-logo.jpg',                            name: 'Majdalani'                  },
+		{ src: '/portfolioSamples/brandIdentity/oceanFrontier%20consultingLogo.jpg',            name: 'Ocean Frontier Consulting'  },
+		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.svg',                    name: 'Troika Insurance'           },
+	];
+
+	const cards = [
+		{ src: '/portfolioSamples/businessCards/equipeFares%20businessCard%20simulation%20002.jpg', name: 'Equipe Farès'          },
+		{ src: '/portfolioSamples/businessCards/majdalani%20MembershipCards%20simulation.jpg',       name: 'Majdalani'             },
+		{ src: '/portfolioSamples/businessCards/troika%20businessCard.jpg',                          name: 'Troika Insurance'      },
+	];
+
+	const stationery = [
+		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg',               name: 'Equipe Farès'          },
+	];
+
+	const categories = [
+		{
+			label: 'Logo Design',
+			items: logos,
+			logo: true,
+			cols: 3,
+			tags: ['#LogoDesign', '#BrandIdentity', '#VisualIdentity', '#Typography', '#Logomark', '#Wordmark'],
+		},
+		{
+			label: 'Business Cards',
+			items: cards,
+			logo: false,
+			cols: 3,
+			tags: ['#BusinessCards', '#PrintDesign', '#CardDesign', '#Branding', '#Stationery'],
+		},
+		{
+			label: 'Stationery',
+			items: stationery,
+			logo: false,
+			cols: 1,
+			tags: ['#Letterhead', '#Stationery', '#OfficeDesign', '#CorporateIdentity', '#PrintReady'],
+		},
 	];
 </script>
 
@@ -29,26 +58,44 @@
 				<span class="lw"><span class="lt"><em class="accent">speaks</em>.</span></span>
 			</h2>
 			<p class="section-desc para-in" use:inview={{ delay: 300 }}>
-				Hover to reveal. Every piece built with intention.
+				From concept to execution — logos, print, and stationery that carry your brand everywhere.
 			</p>
 		</div>
 
-		<div class="grid wall-in" use:inview>
-			{#each pieces as piece, i}
-				<div
-					class="cell"
-					class:logo={piece.logo}
-					style="grid-column:{piece.gc}; grid-row:{piece.gr}; --i:{i}"
-					use:inview={{ delay: i * 40 }}
-				>
-					<img src={piece.src} alt={piece.name} loading="lazy" />
-					<div class="overlay">
-						<span class="overlay-cat">{piece.cat}</span>
-						<span class="overlay-name">{piece.name}</span>
-					</div>
+		{#each categories as cat, ci}
+			<div class="cat-block cat-in" use:inview={{ delay: ci * 80 }}>
+
+				<!-- Label -->
+				<div class="cat-header">
+					<span class="cat-name">{cat.label}</span>
+					<span class="cat-count">{String(cat.items.length).padStart(2,'0')}</span>
 				</div>
-			{/each}
-		</div>
+
+				<!-- Grid -->
+				<div
+					class="reveal-grid"
+					class:logo-grid={cat.logo}
+					style="--cols:{cat.cols}"
+				>
+					{#each cat.items as item, i}
+						<div class="cell" class:logo={cat.logo} style="--i:{i}" use:inview={{ delay: i * 50 }}>
+							<img src={item.src} alt={item.name} loading="lazy" />
+							<div class="overlay">
+								<span class="overlay-name">{item.name}</span>
+							</div>
+						</div>
+					{/each}
+				</div>
+
+				<!-- Tags -->
+				<div class="tags">
+					{#each cat.tags as tag}
+						<span class="tag">{tag}</span>
+					{/each}
+				</div>
+
+			</div>
+		{/each}
 
 	</div>
 </section>
@@ -57,7 +104,7 @@
 	section { padding: var(--section-pad) 0; }
 
 	/* ── Header ─────────────────────────────── */
-	.section-header { margin-bottom: 48px; }
+	.section-header { margin-bottom: 64px; }
 
 	.tag-in:global(.inview-ready) {
 		opacity: 0; transform: translateY(-18px) scale(0.88);
@@ -84,35 +131,60 @@
 	.para-in:global(.inview-ready) { opacity: 0; transform: translateY(24px); filter: blur(4px); }
 	.para-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-	/* ── Grid ────────────────────────────────── */
-	.wall-in {
-		transition: opacity 0.5s ease;
-	}
-	.wall-in:global(.inview-ready) { opacity: 0; }
-	.wall-in:global(.inview-ready.visible) { opacity: 1; }
+	/* ── Category block ──────────────────────── */
+	.cat-block { margin-bottom: 72px; }
 
-	.grid {
+	.cat-in {
+		transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
+	}
+	.cat-in:global(.inview-ready) { opacity: 0; transform: translateY(36px); }
+	.cat-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); }
+
+	.cat-header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		padding-bottom: 14px;
+		margin-bottom: 12px;
+		border-bottom: 1px solid var(--color-border);
+	}
+	.cat-name {
+		font-size: clamp(1rem, 2vw, 1.4rem);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+	.cat-count {
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		color: var(--color-accent);
+	}
+
+	/* ── Reveal grid ─────────────────────────── */
+	.reveal-grid {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-auto-rows: 200px;
+		grid-template-columns: repeat(var(--cols), 1fr);
 		gap: 4px;
-		border-radius: 16px;
+		border-radius: 12px;
 		overflow: hidden;
 	}
 
-	/* Last row (letterhead) is taller */
-	.cell[style*="gr: '5'"],
-	.cell[style*="grid-row:5"] {
-		grid-row: 5;
-		height: 260px;
+	/* Logos: short rows — tightly packed */
+	.logo-grid {
+		grid-auto-rows: 160px;
+	}
+
+	/* Non-logo grids */
+	.reveal-grid:not(.logo-grid) {
+		grid-auto-rows: 220px;
 	}
 
 	/* ── Cell ────────────────────────────────── */
 	.cell {
 		position: relative;
 		overflow: hidden;
-		cursor: pointer;
 		background: var(--color-surface);
+		cursor: pointer;
 		transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
 	}
 	.cell:global(.inview-ready) { opacity: 0; transform: scale(0.94); }
@@ -122,70 +194,72 @@
 		width: 100%; height: 100%;
 		object-fit: cover;
 		display: block;
-		filter: grayscale(1) brightness(0.3) blur(1px);
+		filter: grayscale(1) brightness(0.28);
 		transform: scale(1.04);
-		transition:
-			filter 0.55s cubic-bezier(0.16,1,0.3,1),
-			transform 0.55s cubic-bezier(0.16,1,0.3,1);
+		transition: filter 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
 	}
+	/* Logos: contain + minimal padding */
 	.cell.logo img {
 		object-fit: contain;
-		padding: 20px;
+		padding: 10px;
 	}
 
 	.cell:hover img {
-		filter: grayscale(0) brightness(1) blur(0);
+		filter: grayscale(0) brightness(1);
 		transform: scale(1.08);
 	}
-	.cell.logo:hover img {
-		transform: scale(1.06);
-	}
+	.cell.logo:hover img { transform: scale(1.05); }
 
-	/* ── Overlay label ───────────────────────── */
+	/* ── Overlay ─────────────────────────────── */
 	.overlay {
 		position: absolute;
 		inset: 0;
 		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: flex-end;
-		padding: 18px 20px;
-		background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+		align-items: flex-end;
+		padding: 14px 16px;
+		background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
 		opacity: 0;
-		transition: opacity 0.4s ease;
+		transition: opacity 0.35s ease;
 	}
 	.cell:hover .overlay { opacity: 1; }
 
-	.overlay-cat {
-		font-size: 0.65rem;
-		font-weight: 700;
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
-		color: var(--color-accent);
-		margin-bottom: 4px;
-	}
 	.overlay-name {
-		font-size: 0.92rem;
+		font-size: 0.82rem;
 		font-weight: 700;
 		color: #fff;
 		letter-spacing: -0.01em;
 	}
 
+	/* ── Tags ────────────────────────────────── */
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 14px;
+	}
+	.tag {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--color-text-dim);
+		border: 1px solid var(--color-border);
+		padding: 5px 13px;
+		border-radius: 999px;
+		letter-spacing: 0.01em;
+		transition: color 0.25s ease, border-color 0.25s ease;
+		cursor: default;
+	}
+	.tag:hover {
+		color: var(--color-accent);
+		border-color: rgba(168,85,247,0.4);
+	}
+
 	/* ── Mobile ──────────────────────────────── */
-	@media (max-width: 768px) {
-		.grid {
-			grid-template-columns: repeat(2, 1fr);
-			grid-auto-rows: 150px;
-		}
-		.cell {
-			grid-column: auto !important;
-			grid-row: auto !important;
-		}
-		/* Always show overlay on mobile (no hover) */
+	@media (max-width: 640px) {
+		.reveal-grid { grid-template-columns: repeat(2, 1fr) !important; }
+		.logo-grid { grid-auto-rows: 130px; }
+		.reveal-grid:not(.logo-grid) { grid-auto-rows: 180px; }
+		/* Always reveal on mobile */
+		.cell img { filter: grayscale(0) brightness(0.85); transform: scale(1); }
 		.overlay { opacity: 1; }
-		.cell img {
-			filter: grayscale(0) brightness(0.75) blur(0);
-			transform: scale(1);
-		}
 	}
 </style>
