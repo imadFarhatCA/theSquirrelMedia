@@ -1,4 +1,5 @@
 <script>
+	import { modalOpen } from '$lib/stores/ui.js';
 	let scrollY = $state(0);
 </script>
 
@@ -25,6 +26,13 @@
 		</h1>
 
 		<p class="hero-sub">Branding &middot; Web Design &middot; Digital Strategy</p>
+
+		<button class="cta-collab" onclick={() => $modalOpen = true}>
+			Let us Collaborate
+			<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+				<path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
 	</div>
 
 	<div class="scroll-indicator" style="opacity: {Math.max(0, 1 - scrollY / 300)}">
@@ -143,6 +151,39 @@
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
 		animation: fadeUp 1s ease 0.7s both;
+	}
+
+	.cta-collab {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		padding: 14px 32px;
+		border: 1.5px solid rgba(168, 85, 247, 0.45);
+		border-radius: 999px;
+		color: var(--color-accent);
+		font-family: inherit;
+		font-size: 0.95rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		cursor: pointer;
+		background: rgba(168, 85, 247, 0.06);
+		backdrop-filter: blur(8px);
+		transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+		margin-top: 48px;
+		animation: fadeUp 1s ease 1s both;
+	}
+	.cta-collab:hover {
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		color: #fff;
+		transform: scale(1.05);
+		box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
+	}
+	.cta-collab svg {
+		transition: transform 0.3s ease;
+	}
+	.cta-collab:hover svg {
+		transform: translate(2px, -2px);
 	}
 
 	.scroll-indicator {
