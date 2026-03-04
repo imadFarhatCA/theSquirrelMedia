@@ -6,7 +6,7 @@
 	import ContactModal from '$lib/components/ContactModal.svelte';
 
 	const siteUrl = 'https://thesquirrelmedia.com';
-	const ogImage = `${siteUrl}/og-image.svg`;
+	const ogImage = `${siteUrl}/og-image.png`;
 	const title = 'the Squirrel Media — Creative Web Design & Branding Agency';
 	const description = 'Creative agency specializing in web design, branding, and digital experiences. We craft identities and websites that stand out.';
 </script>
