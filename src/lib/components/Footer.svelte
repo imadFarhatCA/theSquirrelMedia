@@ -25,10 +25,7 @@
 	<div class="container footer-grid">
 		<div class="footer-col brand-col">
 			<div class="footer-logo">
-				<svg width="32" height="32" viewBox="161 -0.5 40.6 39.9" fill="currentColor">
-					<path d="M174.44,33.06c-.26-.72.4-1.38.12-2.12-2.32-6.24,2.45-12.22,7.9-15.22,1.26-.69,3.45-1.25,4.49-1.96.63-.43,1.24-2.05,1.96-2.73.51-.48,1.49-1.06,2.16-1.27-.48-1.27-.08-2.85.58-4.02.56-.34,2.21,1.13,2.54,1.58.46.62.8,2.2.98,2.35.57.48,1.88.62,2.84,1.66,1.95,2.1,3.71,8.08-.81,8.19-.77.02-2.64-.65-3.06-.54-.37.1-1.83,1.49-1.88,1.86.41.64,1.15,1.02,1.64,1.63.94,1.15,2.31,4.19-.02,4.49-1.82.24-1.59-1.52-2.34-2.53-1.28-1.72-1.66-.08-2.15,1.15.37.79,1.14,1.17,1.56,1.99,1.29,2.52.07,5.4-.86,7.8.89.04,1.86-.22,2.55.47.56,1.44-.11,2.09-1.47,2.07-4.29-.04-12.38-.08-16.75-.08-9.59,0-13.8-10.92-11.21-20.25,1.2-4.31,5.66-9.27.49-12.8,2.08-1.69,4.7-3.11,7.38-3.57,8.87-1.5,11.96,6.11,7,13.35-1.49,2.17-3.61,3.97-4.66,6.48-1.39,3.29-5.35,8.68,1.02,12.02Z"/>
-				</svg>
-				<span class="footer-name">the Squirrel Media</span>
+				<img src="/images/logos/squirrel-logo.svg" alt="the Squirrel Media" class="footer-logo-img" />
 			</div>
 			<p class="footer-tagline">
 				Identity Conceptualization<br />
@@ -112,17 +109,13 @@
 	}
 
 	.footer-logo {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		color: var(--color-accent);
 		margin-bottom: 16px;
 	}
 
-	.footer-name {
-		font-size: 0.9rem;
-		font-weight: 700;
-		color: var(--color-text);
+	.footer-logo-img {
+		height: 40px;
+		width: auto;
+		opacity: 0.9;
 	}
 
 	.footer-tagline {
