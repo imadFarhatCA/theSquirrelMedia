@@ -10,7 +10,8 @@
 		return () => window.removeEventListener('scroll', onScroll);
 	});
 
-	function scrollTo(id) {
+	function scrollTo(e, id) {
+		e.preventDefault();
 		menuOpen = false;
 		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 	}
@@ -28,10 +29,10 @@
 		</button>
 
 		<div class="nav-links">
-			<button onclick={() => scrollTo('work')}><span>Digital</span></button>
-			<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
-			<button onclick={() => scrollTo('about')}><span>About</span></button>
-			<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
+			<a href="#work" onclick={(e) => scrollTo(e, 'work')}><span>Digital</span></a>
+			<a href="#branding" onclick={(e) => scrollTo(e, 'branding')}><span>Branding</span></a>
+			<a href="#about" onclick={(e) => scrollTo(e, 'about')}><span>About</span></a>
+			<a href="#contact" onclick={(e) => scrollTo(e, 'contact')}><span>Contact</span></a>
 		</div>
 	</div>
 </nav>
@@ -46,10 +47,10 @@
 
 	<div class="overlay-center">
 		<div class="overlay-nav">
-			<button onclick={() => scrollTo('work')}><span>Digital</span></button>
-			<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
-			<button onclick={() => scrollTo('about')}><span>About</span></button>
-			<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
+			<a href="#work" onclick={(e) => scrollTo(e, 'work')}><span>Digital</span></a>
+			<a href="#branding" onclick={(e) => scrollTo(e, 'branding')}><span>Branding</span></a>
+			<a href="#about" onclick={(e) => scrollTo(e, 'about')}><span>About</span></a>
+			<a href="#contact" onclick={(e) => scrollTo(e, 'contact')}><span>Contact</span></a>
 		</div>
 
 		<button class="overlay-cta" onclick={openModal}>
@@ -137,7 +138,7 @@
 		display: flex;
 		gap: 8px;
 	}
-	.nav-links button:not(.close-btn) {
+	.nav-links a {
 		position: relative;
 		background: none;
 		border: none;
@@ -149,12 +150,13 @@
 		cursor: pointer;
 		border-radius: 999px;
 		overflow: hidden;
+		text-decoration: none;
 	}
-	.nav-links button:not(.close-btn) span {
+	.nav-links a span {
 		display: inline-block;
 		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
 	}
-	.nav-links button:not(.close-btn)::after {
+	.nav-links a::after {
 		content: '';
 		position: absolute;
 		bottom: 4px;
@@ -167,11 +169,11 @@
 		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 		transform-origin: center;
 	}
-	.nav-links button:not(.close-btn):hover span {
+	.nav-links a:hover span {
 		transform: translateY(-2px);
 		color: var(--color-accent);
 	}
-	.nav-links button:not(.close-btn):hover::after {
+	.nav-links a:hover::after {
 		transform: translateX(-50%) scaleX(1);
 	}
 
@@ -241,7 +243,7 @@
 			align-items: center;
 			gap: 4px;
 		}
-		.overlay-nav button {
+		.overlay-nav a {
 			background: none;
 			border: none;
 			color: var(--color-text-muted);
@@ -251,8 +253,9 @@
 			padding: 14px 32px;
 			cursor: pointer;
 			transition: color 0.2s ease;
+			text-decoration: none;
 		}
-		.overlay-nav button:hover {
+		.overlay-nav a:hover {
 			color: var(--color-accent);
 		}
 

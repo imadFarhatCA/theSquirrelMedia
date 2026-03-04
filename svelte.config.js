@@ -11,10 +11,7 @@ const config = {
 			strict: true
 		}),
 		prerender: {
-			handleHttpError: ({ path, referrer, message }) => {
-				if (path === '/privacy-policy' || path === '/terms') return;
-				throw new Error(message);
-			}
+			handleHttpError: 'warn'
 		}
 	}
 };
