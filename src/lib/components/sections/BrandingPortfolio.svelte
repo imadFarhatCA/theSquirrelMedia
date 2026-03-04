@@ -1,141 +1,225 @@
 <script>
 	import { inview } from '$lib/actions/inview.js';
 
-	const mockups = [
-		{ label: 'Business Card', span: 'tall', gradient: 'linear-gradient(135deg, #1a1a2e, #2d1b3d)' },
-		{ label: 'Storefront Sign', span: 'wide', gradient: 'linear-gradient(135deg, #1b2838, #0f1923)' },
-		{ label: 'Letterhead', span: 'tall', gradient: 'linear-gradient(135deg, #2a1f3d, #1a1528)' },
-		{ label: 'Tote Bag', span: 'normal', gradient: 'linear-gradient(135deg, #1f2937, #111827)' },
-		{ label: 'App Icon', span: 'normal', gradient: 'linear-gradient(135deg, #312e4a, #1e1b30)' },
-		{ label: 'Social Media', span: 'wide', gradient: 'linear-gradient(135deg, #1a2332, #0d1520)' }
+	const logos = [
+		{ src: '/portfolioSamples/brandIdentity/LAM%20-%20Lydia%20Tanios%20earthycolor.jpg', alt: 'LAM — Lydia Tanios' },
+		{ src: '/portfolioSamples/brandIdentity/Semolina%20LogoBranding.jpg', alt: 'Semolina' },
+		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%201.jpg', alt: 'Siralloc' },
+		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%202.jpg', alt: 'Siralloc' },
+		{ src: '/portfolioSamples/brandIdentity/el-Hage%20Assurances%20newLogo.jpg', alt: 'el-Hage Assurances' },
+		{ src: '/portfolioSamples/brandIdentity/it%20is%20Thyme%20-%20logo.jpg', alt: 'it is Thyme' },
+		{ src: '/portfolioSamples/brandIdentity/majdalani-logo.jpg', alt: 'Majdalani' },
+		{ src: '/portfolioSamples/brandIdentity/oceanFrontier%20consultingLogo.jpg', alt: 'Ocean Frontier Consulting' },
+		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.svg', alt: 'Troika Insurance' },
+	];
+
+	const cards = [
+		{ src: '/portfolioSamples/businessCards/equipeFares%20businessCard%20simulation%20002.jpg', alt: 'Equipe Farès Business Card' },
+		{ src: '/portfolioSamples/businessCards/majdalani%20MembershipCards%20simulation.jpg', alt: 'Majdalani Membership Cards' },
+		{ src: '/portfolioSamples/businessCards/troika%20businessCard.jpg', alt: 'Troika Insurance Business Card' },
+	];
+
+	const stationery = [
+		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg', alt: 'Equipe Farès Envelope & Letterhead' },
 	];
 </script>
 
 <section id="branding">
 	<div class="container">
-		<div class="section-header reveal-left" use:inview>
-			<span class="section-tag">Branding</span>
-			<h2>Identity that<br /><span class="accent">speaks</span>.</h2>
-			<p class="section-desc">From concept to execution, we build visual identities that resonate across every touchpoint.</p>
+
+		<!-- Header -->
+		<div class="section-header">
+			<span class="section-tag tag-in" use:inview>Branding</span>
+			<h2 class="heading-in" use:inview>
+				<span class="lw"><span class="lt">Identity that</span></span>
+				<span class="lw"><span class="lt"><em class="accent">speaks</em>.</span></span>
+			</h2>
+			<p class="section-desc para-in" use:inview={{ delay: 300 }}>
+				From concept to execution — logos, print, and stationery that carry your brand everywhere.
+			</p>
 		</div>
 
-		<div class="mockup-grid">
-			{#each mockups as mockup, i}
-				<div
-					class="mockup-card {mockup.span} reveal-up"
-					use:inview={{ delay: i * 80 }}
-					style="background: {mockup.gradient}"
-				>
-					<div class="mockup-logo">
-						<svg width="56" height="56" viewBox="161 -0.5 40.6 39.9" fill="currentColor" opacity="0.5">
-							<path d="M174.44,33.06c-.26-.72.4-1.38.12-2.12-2.32-6.24,2.45-12.22,7.9-15.22,1.26-.69,3.45-1.25,4.49-1.96.63-.43,1.24-2.05,1.96-2.73.51-.48,1.49-1.06,2.16-1.27-.48-1.27-.08-2.85.58-4.02.56-.34,2.21,1.13,2.54,1.58.46.62.8,2.2.98,2.35.57.48,1.88.62,2.84,1.66,1.95,2.1,3.71,8.08-.81,8.19-.77.02-2.64-.65-3.06-.54-.37.1-1.83,1.49-1.88,1.86.41.64,1.15,1.02,1.64,1.63.94,1.15,2.31,4.19-.02,4.49-1.82.24-1.59-1.52-2.34-2.53-1.28-1.72-1.66-.08-2.15,1.15.37.79,1.14,1.17,1.56,1.99,1.29,2.52.07,5.4-.86,7.8.89.04,1.86-.22,2.55.47.56,1.44-.11,2.09-1.47,2.07-4.29-.04-12.38-.08-16.75-.08-9.59,0-13.8-10.92-11.21-20.25,1.2-4.31,5.66-9.27.49-12.8,2.08-1.69,4.7-3.11,7.38-3.57,8.87-1.5,11.96,6.11,7,13.35-1.49,2.17-3.61,3.97-4.66,6.48-1.39,3.29-5.35,8.68,1.02,12.02Z"/>
-						</svg>
+		<!-- Logos -->
+		<div class="category cat-in" use:inview>
+			<h3 class="cat-label">Logo Design</h3>
+			<div class="logos-grid">
+				{#each logos as logo, i}
+					<div class="logo-card" style="--i:{i}" use:inview={{ delay: i * 60 }}>
+						<img src={logo.src} alt={logo.alt} loading="lazy" />
 					</div>
-					<span class="mockup-label">{mockup.label}</span>
-				</div>
-			{/each}
+				{/each}
+			</div>
 		</div>
+
+		<!-- Business Cards -->
+		<div class="category cat-in" use:inview>
+			<h3 class="cat-label">Business Cards</h3>
+			<div class="cards-grid">
+				{#each cards as card, i}
+					<div class="print-card" style="--i:{i}" use:inview={{ delay: i * 100 }}>
+						<img src={card.src} alt={card.alt} loading="lazy" />
+					</div>
+				{/each}
+			</div>
+		</div>
+
+		<!-- Letterhead / Stationery -->
+		<div class="category cat-in" use:inview>
+			<h3 class="cat-label">Stationery</h3>
+			<div class="stationery-grid">
+				{#each stationery as item}
+					<div class="print-card wide" use:inview>
+						<img src={item.src} alt={item.alt} loading="lazy" />
+					</div>
+				{/each}
+			</div>
+		</div>
+
 	</div>
 </section>
 
 <style>
-	section {
-		padding: var(--section-pad) 0;
-	}
+	section { padding: var(--section-pad) 0; }
 
-	.section-header {
-		margin-bottom: 60px;
+	/* ── Header ─────────────────────────────── */
+	.section-header { margin-bottom: 72px; }
+
+	.tag-in:global(.inview-ready) {
+		opacity: 0;
+		transform: translateY(-18px) scale(0.88);
+		transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+		            transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
+	.tag-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0) scale(1); }
 
 	h2 {
-		font-size: clamp(2rem, 3.5vw, 3.5rem);
-		margin-bottom: 16px;
+		font-size: clamp(2.2rem, 4vw, 3.8rem);
+		margin-top: 22px;
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column;
 	}
+	.lw { display: block; overflow: hidden; padding-bottom: 0.06em; }
+	.lt {
+		display: block;
+		transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.lw:nth-child(2) .lt { transition-delay: 0.1s; }
 
-	.accent { color: var(--color-accent); }
+	.heading-in:global(.inview-ready) .lt {
+		transform: translateY(115%) skewY(6deg);
+		transform-origin: left bottom;
+	}
+	.heading-in:global(.inview-ready.visible) .lt { transform: translateY(0) skewY(0deg); }
+
+	.accent { font-style: normal; color: var(--color-accent); }
 
 	.section-desc {
 		font-size: 1rem;
-		max-width: 480px;
+		max-width: 520px;
+		transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+	}
+	.para-in:global(.inview-ready) { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+	.para-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+	/* ── Category blocks ─────────────────────── */
+	.category { margin-bottom: 72px; }
+
+	.cat-in {
+		transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.cat-in:global(.inview-ready) { opacity: 0; transform: translateY(40px); }
+	.cat-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); }
+
+	.cat-label {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-text-dim);
+		margin-bottom: 24px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid var(--color-border);
 	}
 
-	.mockup-grid {
+	/* ── Logos grid ──────────────────────────── */
+	.logos-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2px;
+	}
+
+	.logo-card {
+		background: var(--color-surface);
+		overflow: hidden;
+		aspect-ratio: 4/3;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		position: relative;
+		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.logo-card:hover { transform: scale(1.04); z-index: 2; }
+
+	.logo-card img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		padding: 24px;
+		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.logo-card:hover img { transform: scale(1.06); }
+
+	/* rounded corners on corner cells */
+	.logo-card:first-child { border-radius: 12px 0 0 0; }
+	.logo-card:nth-child(3) { border-radius: 0 12px 0 0; }
+	.logo-card:nth-child(7) { border-radius: 0 0 0 12px; }
+	.logo-card:nth-child(9) { border-radius: 0 0 12px 0; }
+
+	/* ── Print cards ─────────────────────────── */
+	.cards-grid,
+	.stationery-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 16px;
 	}
 
-	.mockup-card {
-		position: relative;
-		border-radius: 16px;
+	.print-card {
+		border-radius: 12px;
 		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		min-height: 240px;
+		background: var(--color-surface);
 		cursor: pointer;
 		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
 		            box-shadow 0.4s ease;
-		border: 1px solid rgba(255,255,255,0.05);
 	}
+	.print-card:hover {
+		transform: scale(1.03) translateY(-4px);
+		box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+	}
+	.print-card.wide { grid-column: span 2; }
 
-	.mockup-card:hover {
-		transform: scale(1.03);
-		box-shadow: 0 20px 60px rgba(168, 85, 247, 0.12);
+	.print-card img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 	}
+	.print-card:hover img { transform: scale(1.04); }
 
-	.mockup-card.tall {
-		grid-row: span 2;
-		min-height: 496px;
-	}
-
-	.mockup-card.wide {
-		grid-column: span 2;
-	}
-
-	.mockup-logo {
-		color: var(--color-accent);
-		transition: transform 0.4s ease, opacity 0.4s ease;
-	}
-	.mockup-card:hover .mockup-logo {
-		transform: scale(1.1);
-	}
-	.mockup-card:hover .mockup-logo svg {
-		opacity: 0.8;
-	}
-
-	.mockup-label {
-		position: absolute;
-		bottom: 16px;
-		left: 20px;
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: rgba(255,255,255,0.35);
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		transition: color 0.4s ease;
-	}
-	.mockup-card:hover .mockup-label {
-		color: rgba(255,255,255,0.6);
-	}
-
+	/* ── Mobile ──────────────────────────────── */
 	@media (max-width: 768px) {
-		.mockup-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-		.mockup-card.tall {
-			grid-row: span 1;
-			min-height: 200px;
-		}
-		.mockup-card.wide {
-			grid-column: span 1;
-		}
-	}
+		.logos-grid { grid-template-columns: repeat(2, 1fr); }
+		.logo-card:first-child { border-radius: 12px 0 0 0; }
+		.logo-card:nth-child(2) { border-radius: 0 12px 0 0; }
+		.logo-card:nth-child(3),
+		.logo-card:nth-child(7) { border-radius: 0; }
+		.logo-card:nth-child(8) { border-radius: 0 0 12px 0; }
+		.logo-card:nth-child(9) { border-radius: 0 0 12px 12px; }
 
-	@media (max-width: 480px) {
-		.mockup-grid {
-			grid-template-columns: 1fr;
-		}
+		.cards-grid,
+		.stationery-grid { grid-template-columns: 1fr; }
+		.print-card.wide { grid-column: span 1; }
 	}
 </style>
