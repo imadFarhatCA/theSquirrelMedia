@@ -95,14 +95,14 @@
 		transform: translateX(-50%) scaleX(0);
 		width: 30%;
 		height: 0.5px;
-		background: var(--color-text);
+		background: var(--color-accent);
 		border-radius: 1px;
 		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 		transform-origin: center;
 	}
 	.nav-links button:not(.close-btn):hover span {
 		transform: translateY(-2px);
-		color: var(--color-text);
+		color: var(--color-accent);
 	}
 	.nav-links button:not(.close-btn):hover::after {
 		transform: translateX(-50%) scaleX(1);
@@ -172,7 +172,7 @@
 			transition: color 0.2s ease;
 		}
 		.mobile-overlay button:not(.close-btn):hover {
-			color: var(--color-text);
+			color: var(--color-accent);
 		}
 		.close-btn {
 			position: absolute;
