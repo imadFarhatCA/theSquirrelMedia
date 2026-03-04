@@ -10,11 +10,13 @@
 		'Hosting & Maintenance'
 	];
 
-	const portfolio = [
-		'Troika Insurance',
-		'Website Control Panel',
-		'EMAK Telecom',
-		'Duniaty'
+	const industries = [
+		'Insurance & Finance',
+		'Food & Beverage',
+		'Technology',
+		'Healthcare',
+		'Real Estate',
+		'Retail & E-commerce',
 	];
 </script>
 
@@ -44,10 +46,10 @@
 		</div>
 
 		<div class="footer-col">
-			<h4>Portfolio</h4>
+			<h4>Industries</h4>
 			<ul>
-				{#each portfolio as p}
-					<li><a href="#work">{p}</a></li>
+				{#each industries as ind}
+					<li>{ind}</li>
 				{/each}
 			</ul>
 		</div>
