@@ -2,20 +2,27 @@
 	import { inview } from '$lib/actions/inview.js';
 
 	const services = [
-		{ num: '01', title: 'Web Design & Development', desc: 'Custom websites built with modern frameworks, optimized for speed and conversion.', dir: 'left' },
-		{ num: '02', title: 'Brand Identity', desc: 'Logos, color systems, typography, and visual language that tell your story.', dir: 'right' },
-		{ num: '03', title: 'UI/UX Design', desc: 'User-centered interfaces that are intuitive, accessible, and delightful to use.', dir: 'left' },
-		{ num: '04', title: 'Digital Strategy', desc: 'SEO, analytics, and growth plans that turn visitors into customers.', dir: 'right' },
-		{ num: '05', title: 'Content Creation', desc: 'Photography, copywriting, and media production that elevates your brand.', dir: 'left' }
+		{ num: '01', title: 'Web Design & Development', desc: 'Custom websites built with modern frameworks, optimized for speed and conversion.' },
+		{ num: '02', title: 'Brand Identity', desc: 'Logos, color systems, typography, and visual language that tell your story.' },
+		{ num: '03', title: 'UI/UX Design', desc: 'User-centered interfaces that are intuitive, accessible, and delightful to use.' },
+		{ num: '04', title: 'Digital Strategy', desc: 'SEO, analytics, and growth plans that turn visitors into customers.' },
+		{ num: '05', title: 'Content Creation', desc: 'Photography, copywriting, and media production that elevates your brand.' }
 	];
 </script>
 
 <section id="about">
 	<div class="container about-grid">
+
 		<div class="about-text">
-			<span class="section-tag fade-up" use:inview>Who We Are</span>
-			<h2 class="fade-up" use:inview={{ delay: 80 }}>Creative studio<br />building brands<br />that <span class="accent">matter</span>.</h2>
-			<p class="fade-up" use:inview={{ delay: 180 }}>
+			<span class="section-tag tag-in" use:inview>Who We Are</span>
+
+			<h2 class="heading-in" use:inview>
+				<span class="lw"><span class="lt">Creative studio</span></span>
+				<span class="lw"><span class="lt">building brands</span></span>
+				<span class="lw"><span class="lt">that <em class="accent">matter</em>.</span></span>
+			</h2>
+
+			<p class="para-in" use:inview={{ delay: 350 }}>
 				We're a small team of designers and developers who believe great digital experiences
 				start with understanding people. We partner with ambitious brands to create websites
 				and identities that stand out, perform, and last.
@@ -24,22 +31,21 @@
 
 		<div class="services-list">
 			{#each services as svc, i}
-				<div class="service-item" use:inview={{ threshold: 0.2 }}>
+				<div class="service-item" style="--i:{i}" use:inview>
 					<span class="service-num">{svc.num}</span>
-					<div>
+					<div class="service-body">
 						<h4>{svc.title}</h4>
 						<p>{svc.desc}</p>
 					</div>
 				</div>
 			{/each}
 		</div>
+
 	</div>
 </section>
 
 <style>
-	section {
-		padding: var(--section-pad) 0;
-	}
+	section { padding: var(--section-pad) 0; }
 
 	.about-grid {
 		display: grid;
@@ -47,69 +53,116 @@
 		gap: 80px;
 		align-items: start;
 	}
-
 	.about-text {
 		position: sticky;
 		top: 120px;
 	}
 
+	/* Tag — only hidden after inview arms it */
+	.tag-in:global(.inview-ready) {
+		opacity: 0;
+		transform: translateY(-18px) scale(0.88);
+		transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+		            transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+	.tag-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0) scale(1); }
+
+	/* Heading */
 	h2 {
-		font-size: clamp(2rem, 3.5vw, 3.5rem);
-		margin-bottom: 24px;
-	}
-
-	.accent { color: var(--color-accent); }
-
-	.about-text p {
-		font-size: 1rem;
-		max-width: 480px;
-	}
-
-	.services-list {
+		font-size: clamp(2.2rem, 4vw, 3.8rem);
+		margin-top: 22px;
+		margin-bottom: 32px;
 		display: flex;
 		flex-direction: column;
-		gap: 0;
 	}
+	.lw {
+		display: block;
+		overflow: hidden;
+		padding-bottom: 0.06em;
+	}
+	.lt {
+		display: block;
+		transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.lw:nth-child(2) .lt { transition-delay: 0.1s; }
+	.lw:nth-child(3) .lt { transition-delay: 0.2s; }
 
-	/* desktop: slide left/right */
+	.heading-in:global(.inview-ready) .lt {
+		transform: translateY(115%) skewY(6deg);
+		transform-origin: left bottom;
+	}
+	.heading-in:global(.inview-ready.visible) .lt { transform: translateY(0) skewY(0deg); }
+
+	.accent { font-style: normal; color: var(--color-accent); }
+
+	/* Paragraph */
+	.para-in {
+		font-size: 1rem;
+		max-width: 480px;
+		transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+	}
+	.para-in:global(.inview-ready) {
+		opacity: 0;
+		transform: translateY(32px);
+		filter: blur(6px);
+	}
+	.para-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+	/* Services */
+	.services-list { display: flex; flex-direction: column; }
+
 	.service-item {
 		display: flex;
-		gap: 20px;
-		padding: 28px 0;
+		gap: 24px;
+		padding: 32px 0;
+		border-top: 1px solid var(--color-border);
+		transition:
+			opacity  0.7s cubic-bezier(0.16, 1, 0.3, 1),
+			transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 0.4s ease;
+	}
+	.service-item:global(.inview-ready) {
+		border-top-color: transparent;
 		opacity: 0;
-		transform: translateX(-40px);
-		transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-		            transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+		transform: translateY(80px) scale(0.9);
+		transition-delay: calc(var(--i) * 0.08s);
 	}
-	.service-item:nth-child(even) {
-		transform: translateX(40px);
-	}
-	.service-item.visible {
+	.service-item:global(.inview-ready.visible) {
 		opacity: 1;
-		transform: translateX(0);
-	}
-
-	/* fade-up for about-text pieces */
-	.fade-up {
-		opacity: 0;
-		transform: translateY(24px);
-		transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-		            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-	}
-	.fade-up.visible {
-		opacity: 1;
-		transform: translateY(0);
+		transform: translateY(0) scale(1);
+		border-top-color: var(--color-border);
 	}
 
 	.service-num {
-		font-size: 1.6rem;
+		font-size: 1.7rem;
 		font-weight: 800;
 		color: var(--color-accent);
 		flex-shrink: 0;
-		width: 48px;
-		letter-spacing: -0.03em;
+		width: 52px;
+		letter-spacing: -0.04em;
 		line-height: 1;
+		transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+		            transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
+	.service-item:global(.inview-ready) .service-num {
+		opacity: 0;
+		transform: scale(0.4) translateY(20px);
+		transition-delay: calc(var(--i) * 0.08s + 0.18s);
+	}
+	.service-item:global(.inview-ready.visible) .service-num {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+
+	.service-body {
+		transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.service-item:global(.inview-ready) .service-body {
+		opacity: 0;
+		transform: translateY(20px);
+		transition-delay: calc(var(--i) * 0.08s + 0.25s);
+	}
+	.service-item:global(.inview-ready.visible) .service-body { opacity: 1; transform: translateY(0); }
 
 	.service-item h4 {
 		font-size: 1.1rem;
@@ -117,28 +170,19 @@
 		letter-spacing: -0.01em;
 		margin-bottom: 6px;
 	}
+	.service-item p { font-size: 0.88rem; line-height: 1.6; margin: 0; }
 
-	.service-item p {
-		font-size: 0.88rem;
-		line-height: 1.6;
-		margin: 0;
-	}
-
+	/* Mobile */
 	@media (max-width: 768px) {
-		.about-grid {
-			grid-template-columns: 1fr;
-			gap: 48px;
+		.about-grid { grid-template-columns: 1fr; gap: 48px; }
+		.about-text { position: static; }
+		h2 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
+
+		.service-item:global(.inview-ready) {
+			transform: translateY(60px) scale(0.92);
+			transition-delay: 0s;
 		}
-		.about-text {
-			position: static;
-		}
-		/* on mobile: all service items slide up instead of left/right */
-		.service-item,
-		.service-item:nth-child(even) {
-			transform: translateY(40px);
-		}
-		.service-item.visible {
-			transform: translateY(0);
-		}
+		.service-item:global(.inview-ready) .service-num { transition-delay: 0.12s; }
+		.service-item:global(.inview-ready) .service-body { transition-delay: 0.2s; }
 	}
 </style>
