@@ -112,25 +112,30 @@
 	.services-list { display: flex; flex-direction: column; }
 
 	.service-item {
+		position: relative;
 		display: flex;
 		gap: 24px;
 		padding: 32px 0;
-		border-top: 1px solid var(--color-border);
-		transition:
-			opacity  0.7s cubic-bezier(0.16, 1, 0.3, 1),
-			transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-			border-color 0.4s ease;
 	}
-	.service-item:global(.inview-ready) {
-		border-top-color: transparent;
-		opacity: 0;
-		transform: translateY(80px) scale(0.9);
-		transition-delay: calc(var(--i) * 0.08s);
+
+	/* Wipe line — drawn via ::before pseudo */
+	.service-item::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: var(--color-border);
+		transform-origin: left center;
+		transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 	}
-	.service-item:global(.inview-ready.visible) {
-		opacity: 1;
-		transform: translateY(0) scale(1);
-		border-top-color: var(--color-border);
+
+	.service-item:global(.inview-ready)::before {
+		transform: scaleX(0);
+	}
+	.service-item:global(.inview-ready.visible)::before {
+		transform: scaleX(1);
 	}
 
 	.service-num {
@@ -141,26 +146,25 @@
 		width: 52px;
 		letter-spacing: -0.04em;
 		line-height: 1;
-		transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-		            transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+		transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 	.service-item:global(.inview-ready) .service-num {
 		opacity: 0;
-		transform: scale(0.4) translateY(20px);
-		transition-delay: calc(var(--i) * 0.08s + 0.18s);
+		transform: translateY(12px);
+		transition-delay: calc(var(--i) * 0.06s + 0.35s);
 	}
 	.service-item:global(.inview-ready.visible) .service-num {
 		opacity: 1;
-		transform: scale(1) translateY(0);
+		transform: translateY(0);
 	}
 
 	.service-body {
-		transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+		transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 	.service-item:global(.inview-ready) .service-body {
 		opacity: 0;
-		transform: translateY(20px);
-		transition-delay: calc(var(--i) * 0.08s + 0.25s);
+		transform: translateY(12px);
+		transition-delay: calc(var(--i) * 0.06s + 0.45s);
 	}
 	.service-item:global(.inview-ready.visible) .service-body { opacity: 1; transform: translateY(0); }
 
@@ -178,11 +182,7 @@
 		.about-text { position: static; }
 		h2 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
 
-		.service-item:global(.inview-ready) {
-			transform: translateY(60px) scale(0.92);
-			transition-delay: 0s;
-		}
-		.service-item:global(.inview-ready) .service-num { transition-delay: 0.12s; }
-		.service-item:global(.inview-ready) .service-body { transition-delay: 0.2s; }
+		.service-item:global(.inview-ready) .service-num { transition-delay: calc(var(--i) * 0.05s + 0.3s); }
+		.service-item:global(.inview-ready) .service-body { transition-delay: calc(var(--i) * 0.05s + 0.4s); }
 	}
 </style>
