@@ -59,9 +59,9 @@
 					<a href="mailto:hello@thesquirrelmedia.com">hello@thesquirrelmedia.com</a>
 				</li>
 				<li>
-					<a href="tel:+9613000000">+961 3 000 000</a>
+					<a href="tel:+15142481548">+1 (514) 248 1548</a>
 				</li>
-				<li>Beirut, Lebanon</li>
+				<li>Laval — QC, Canada</li>
 			</ul>
 
 			<div class="socials">
@@ -87,6 +87,11 @@
 
 	<div class="footer-bottom container">
 		<span>&copy; {year} the Squirrel Media. All rights reserved.</span>
+		<div class="footer-legal">
+			<a href="/privacy-policy">Privacy Policy</a>
+			<span class="sep">·</span>
+			<a href="/terms">Terms & Conditions</a>
+		</div>
 	</div>
 </footer>
 
@@ -173,9 +178,28 @@
 		margin-top: 48px;
 		padding: 20px 0;
 		border-top: 1px solid var(--color-border);
-		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 12px;
 	}
 	.footer-bottom span {
+		font-size: 0.78rem;
+		color: var(--color-text-dim);
+	}
+	.footer-legal {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	.footer-legal a {
+		font-size: 0.78rem;
+		color: var(--color-text-dim);
+		transition: color 0.2s ease;
+	}
+	.footer-legal a:hover { color: var(--color-accent); }
+	.footer-legal .sep {
 		font-size: 0.78rem;
 		color: var(--color-text-dim);
 	}
