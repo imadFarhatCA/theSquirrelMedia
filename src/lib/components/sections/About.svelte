@@ -116,6 +116,21 @@
 		display: flex;
 		gap: 24px;
 		padding: 32px 0;
+		transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+		            transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	/* Odd items from left, even from right */
+	.service-item:global(.inview-ready) {
+		opacity: 0;
+		transform: translateX(-70px);
+	}
+	.service-item:nth-child(even):global(.inview-ready) {
+		transform: translateX(70px);
+	}
+	.service-item:global(.inview-ready.visible) {
+		opacity: 1;
+		transform: translateX(0);
 	}
 
 	/* Wipe line — drawn via ::before pseudo */
@@ -128,7 +143,7 @@
 		height: 1px;
 		background: var(--color-border);
 		transform-origin: left center;
-		transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+		transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
 	}
 
 	.service-item:global(.inview-ready)::before {
@@ -146,27 +161,9 @@
 		width: 52px;
 		letter-spacing: -0.04em;
 		line-height: 1;
-		transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-	}
-	.service-item:global(.inview-ready) .service-num {
-		opacity: 0;
-		transform: translateY(12px);
-		transition-delay: calc(var(--i) * 0.06s + 0.35s);
-	}
-	.service-item:global(.inview-ready.visible) .service-num {
-		opacity: 1;
-		transform: translateY(0);
 	}
 
-	.service-body {
-		transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-	}
-	.service-item:global(.inview-ready) .service-body {
-		opacity: 0;
-		transform: translateY(12px);
-		transition-delay: calc(var(--i) * 0.06s + 0.45s);
-	}
-	.service-item:global(.inview-ready.visible) .service-body { opacity: 1; transform: translateY(0); }
+	.service-body {}
 
 	.service-item h4 {
 		font-size: 1.1rem;
@@ -182,7 +179,7 @@
 		.about-text { position: static; }
 		h2 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
 
-		.service-item:global(.inview-ready) .service-num { transition-delay: calc(var(--i) * 0.05s + 0.3s); }
-		.service-item:global(.inview-ready) .service-body { transition-delay: calc(var(--i) * 0.05s + 0.4s); }
+		.service-item:global(.inview-ready) { transform: translateX(-40px); }
+		.service-item:nth-child(even):global(.inview-ready) { transform: translateX(40px); }
 	}
 </style>
