@@ -8,6 +8,9 @@
 <section class="hero">
 	<div class="hero-content" style="transform: translateY({scrollY * 0.3}px); opacity: {Math.max(0, 1 - scrollY / 600)}">
 		<div class="hero-logo">
+			<span class="ripple" aria-hidden="true"></span>
+			<span class="ripple ripple-2" aria-hidden="true"></span>
+			<span class="ripple ripple-3" aria-hidden="true"></span>
 			<div class="hover-hint" aria-hidden="true">
 				<svg width="20" height="20" viewBox="0 0 14 14" fill="none">
 					<path d="M7 13V3M3 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -78,6 +81,26 @@
 		cursor: pointer;
 		position: relative;
 		height: 56px;
+	}
+
+	.ripple {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		width: 56px;
+		height: 56px;
+		border-radius: 50%;
+		border: 1px solid rgba(168, 85, 247, 0.5);
+		animation: rippleOut 3s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+		pointer-events: none;
+	}
+	.ripple-2 { animation-delay: 1s; }
+	.ripple-3 { animation-delay: 2s; }
+
+	@keyframes rippleOut {
+		0%   { width: 56px; height: 56px; opacity: 0.6; border-color: rgba(168, 85, 247, 0.5); }
+		100% { width: 200px; height: 200px; opacity: 0; border-color: rgba(168, 85, 247, 0); }
 	}
 
 	.hover-hint {
