@@ -61,7 +61,7 @@
 				<li>
 					<a href="tel:+15142481548">+1 (514) 248 1548</a>
 				</li>
-				<li>Laval — QC, Canada</li>
+				<li>Laval - QC, Canada</li>
 			</ul>
 
 			<div class="socials">
