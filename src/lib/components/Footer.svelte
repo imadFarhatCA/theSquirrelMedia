@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="footer-col">
-			<h4>Industries</h4>
+			<h4>Industries We've Served</h4>
 			<ul>
 				{#each industries as ind}
 					<li>{ind}</li>
