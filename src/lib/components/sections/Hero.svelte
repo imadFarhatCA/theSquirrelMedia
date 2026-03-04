@@ -103,7 +103,7 @@
 		color: var(--color-text);
 		opacity: 0.8;
 		flex-shrink: 0;
-		animation: iconFloat 0.9s ease-in-out 2s infinite;
+		animation: iconFloat 2s ease-in-out 2s infinite;
 		transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 	.hero-logo:hover .logo-icon {
@@ -113,8 +113,11 @@
 	}
 
 	@keyframes iconFloat {
-		0%, 100% { transform: scale(1); opacity: 0.8; }
-		50% { transform: scale(1.12); opacity: 1; }
+		0%        { transform: scale(1);    opacity: 0.8; }
+		20%       { transform: scale(1.12); opacity: 1;   }
+		35%       { transform: scale(1);    opacity: 0.8; }
+		55%       { transform: scale(1.12); opacity: 1;   }
+		70%, 100% { transform: scale(1);    opacity: 0.8; }
 	}
 
 	.logo-full {
