@@ -169,9 +169,9 @@
 		overflow: hidden;
 	}
 
-	/* Logos: short rows — tightly packed */
-	.logo-grid {
-		grid-auto-rows: 160px;
+	/* Logos: perfect squares, no fixed row height */
+	.logo-grid .cell {
+		aspect-ratio: 1 / 1;
 	}
 
 	/* Non-logo grids */
@@ -198,10 +198,10 @@
 		transform: scale(1.04);
 		transition: filter 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
 	}
-	/* Logos: contain + minimal padding */
+	/* Logos: contain + tight padding */
 	.cell.logo img {
 		object-fit: contain;
-		padding: 10px;
+		padding: 6px;
 	}
 
 	.cell:hover img {
@@ -255,8 +255,8 @@
 
 	/* ── Mobile ──────────────────────────────── */
 	@media (max-width: 640px) {
-		.reveal-grid { grid-template-columns: repeat(2, 1fr) !important; }
-		.logo-grid { grid-auto-rows: 130px; }
+		.reveal-grid:not(.logo-grid) { grid-template-columns: repeat(2, 1fr) !important; }
+		/* Logo grid stays 3-col — squares are small enough */
 		.reveal-grid:not(.logo-grid) { grid-auto-rows: 180px; }
 		/* Always reveal on mobile */
 		.cell img { filter: grayscale(0) brightness(0.85); transform: scale(1); }
