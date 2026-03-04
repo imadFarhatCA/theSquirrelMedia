@@ -102,7 +102,7 @@
 		color: var(--color-text);
 		opacity: 0.8;
 		flex-shrink: 0;
-		animation: iconFloat 4s ease-in-out 2s infinite;
+		animation: iconFloat 1.8s ease-in-out 2s infinite;
 		transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 	.hero-logo:hover .logo-icon {
