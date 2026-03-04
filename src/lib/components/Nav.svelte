@@ -20,21 +20,27 @@
 			<span></span><span></span><span></span>
 		</button>
 
-		<div class="nav-links" class:open={menuOpen}>
-			{#if menuOpen}
-				<button class="close-btn" onclick={() => menuOpen = false} aria-label="Close menu">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-					</svg>
-				</button>
-			{/if}
-			<button onclick={() => scrollTo('work')}>Work</button>
-			<button onclick={() => scrollTo('branding')}>Branding</button>
-			<button onclick={() => scrollTo('about')}>About</button>
-			<button onclick={() => scrollTo('contact')}>Contact</button>
+		<div class="nav-links">
+			<button onclick={() => scrollTo('work')}><span>Work</span></button>
+			<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
+			<button onclick={() => scrollTo('about')}><span>About</span></button>
+			<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
 		</div>
 	</div>
 </nav>
+
+<!-- Mobile overlay — outside <nav> to avoid backdrop-filter stacking context -->
+<div class="mobile-overlay" class:open={menuOpen}>
+	<button class="close-btn" onclick={() => menuOpen = false} aria-label="Close menu">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+			<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+		</svg>
+	</button>
+	<button onclick={() => scrollTo('work')}><span>Work</span></button>
+	<button onclick={() => scrollTo('branding')}><span>Branding</span></button>
+	<button onclick={() => scrollTo('about')}><span>About</span></button>
+	<button onclick={() => scrollTo('contact')}><span>Contact</span></button>
+</div>
 
 <style>
 	nav {
@@ -65,6 +71,7 @@
 		gap: 8px;
 	}
 	.nav-links button:not(.close-btn) {
+		position: relative;
 		background: none;
 		border: none;
 		color: var(--color-text-muted);
@@ -73,12 +80,32 @@
 		font-weight: 500;
 		padding: 8px 16px;
 		cursor: pointer;
-		transition: color var(--ease);
 		border-radius: 999px;
+		overflow: hidden;
 	}
-	.nav-links button:not(.close-btn):hover {
+	.nav-links button:not(.close-btn) span {
+		display: inline-block;
+		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+	}
+	.nav-links button:not(.close-btn)::after {
+		content: '';
+		position: absolute;
+		bottom: 4px;
+		left: 50%;
+		transform: translateX(-50%) scaleX(0);
+		width: 30%;
+		height: 0.5px;
+		background: var(--color-text);
+		border-radius: 1px;
+		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+		transform-origin: center;
+	}
+	.nav-links button:not(.close-btn):hover span {
+		transform: translateY(-2px);
 		color: var(--color-text);
-		background: rgba(255,255,255,0.05);
+	}
+	.nav-links button:not(.close-btn):hover::after {
+		transform: translateX(-50%) scaleX(1);
 	}
 
 	.nav-toggle {
@@ -104,17 +131,23 @@
 	.nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
 	.nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+	.mobile-overlay {
+		display: none;
+	}
+
 	@media (max-width: 768px) {
 		.nav-toggle { display: flex; }
 		.nav-inner { justify-content: space-between; }
-		.nav-links {
+		.nav-links { display: none; }
+
+		.mobile-overlay {
+			display: flex;
 			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
+			inset: 0;
+			z-index: 200;
 			background: rgba(10, 10, 10, 0.97);
 			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
@@ -123,29 +156,36 @@
 			pointer-events: none;
 			transition: opacity 0.3s ease;
 		}
-		.nav-links.open {
+		.mobile-overlay.open {
 			opacity: 1;
 			pointer-events: auto;
 		}
-		.nav-links button:not(.close-btn) {
+		.mobile-overlay button:not(.close-btn) {
+			background: none;
+			border: none;
+			color: var(--color-text-muted);
+			font-family: var(--font);
 			font-size: 1.5rem;
 			font-weight: 700;
 			padding: 16px 32px;
+			cursor: pointer;
+			transition: color 0.2s ease;
+		}
+		.mobile-overlay button:not(.close-btn):hover {
+			color: var(--color-text);
 		}
 		.close-btn {
 			position: absolute;
 			top: 16px;
 			right: 16px;
-			z-index: 10;
 			width: 44px;
 			height: 44px;
 			border-radius: 50%;
-			border: 1px solid rgba(255,255,255,0.15) !important;
+			border: 1px solid rgba(255,255,255,0.15);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			padding: 0 !important;
-			font-size: 1rem;
+			padding: 0;
 			color: var(--color-text-muted);
 			background: none;
 			cursor: pointer;
@@ -154,8 +194,8 @@
 		}
 		.close-btn:hover {
 			color: var(--color-text);
-			border-color: rgba(255,255,255,0.4) !important;
-			background: rgba(255,255,255,0.08) !important;
+			border-color: rgba(255,255,255,0.4);
+			background: rgba(255,255,255,0.08);
 		}
 		@keyframes popIn {
 			from { opacity: 0; transform: scale(0.6) rotate(-90deg); }

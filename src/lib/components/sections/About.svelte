@@ -12,10 +12,10 @@
 
 <section id="about">
 	<div class="container about-grid">
-		<div class="about-text reveal-left" use:inview>
-			<span class="section-tag">Who We Are</span>
-			<h2>Creative studio<br />building brands<br />that <span class="accent">matter</span>.</h2>
-			<p>
+		<div class="about-text">
+			<span class="section-tag fade-up" use:inview>Who We Are</span>
+			<h2 class="fade-up" use:inview={{ delay: 80 }}>Creative studio<br />building brands<br />that <span class="accent">matter</span>.</h2>
+			<p class="fade-up" use:inview={{ delay: 180 }}>
 				We're a small team of designers and developers who believe great digital experiences
 				start with understanding people. We partner with ambitious brands to create websites
 				and identities that stand out, perform, and last.
@@ -24,7 +24,7 @@
 
 		<div class="services-list">
 			{#each services as svc, i}
-				<div class="service-item slide-{svc.dir}" use:inview={{ delay: i * 150 }}>
+				<div class="service-item" use:inview={{ threshold: 0.2 }}>
 					<span class="service-num">{svc.num}</span>
 					<div>
 						<h4>{svc.title}</h4>
@@ -71,26 +71,34 @@
 		gap: 0;
 	}
 
+	/* desktop: slide left/right */
 	.service-item {
 		display: flex;
 		gap: 20px;
 		padding: 28px 0;
 		opacity: 0;
+		transform: translateX(-40px);
 		transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
 		            transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 	}
-
-	.slide-left {
-		transform: translateX(-60px);
+	.service-item:nth-child(even) {
+		transform: translateX(40px);
 	}
-	.slide-right {
-		transform: translateX(60px);
-	}
-
-	.slide-left.visible,
-	.slide-right.visible {
+	.service-item.visible {
 		opacity: 1;
 		transform: translateX(0);
+	}
+
+	/* fade-up for about-text pieces */
+	.fade-up {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+		            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.fade-up.visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	.service-num {
@@ -123,6 +131,14 @@
 		}
 		.about-text {
 			position: static;
+		}
+		/* on mobile: all service items slide up instead of left/right */
+		.service-item,
+		.service-item:nth-child(even) {
+			transform: translateY(40px);
+		}
+		.service-item.visible {
+			transform: translateY(0);
 		}
 	}
 </style>
