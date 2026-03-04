@@ -1,32 +1,22 @@
 <script>
 	import { inview } from '$lib/actions/inview.js';
-	import { fade } from 'svelte/transition';
 
+	// gc = grid-column, gr = grid-row, logo = contain+padding
 	const pieces = [
-		{ src: '/portfolioSamples/brandIdentity/LAM%20-%20Lydia%20Tanios%20earthycolor.jpg',             name: 'LAM — Lydia Tanios',            cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/Semolina%20LogoBranding.jpg',                             name: 'Semolina',                      cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%201.jpg',                                    name: 'Siralloc',                      cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%202.jpg',                                    name: 'Siralloc',                      cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/el-Hage%20Assurances%20newLogo.jpg',                      name: 'el-Hage Assurances',            cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/it%20is%20Thyme%20-%20logo.jpg',                          name: 'it is Thyme',                   cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/majdalani-logo.jpg',                                      name: 'Majdalani',                     cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/oceanFrontier%20consultingLogo.jpg',                      name: 'Ocean Frontier Consulting',     cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.svg',                              name: 'Troika Insurance',              cat: 'Logo',          logo: true  },
-		{ src: '/portfolioSamples/businessCards/equipeFares%20businessCard%20simulation%20002.jpg',        name: 'Equipe Farès',                  cat: 'Business Card', logo: false },
-		{ src: '/portfolioSamples/businessCards/majdalani%20MembershipCards%20simulation.jpg',             name: 'Majdalani',                     cat: 'Business Card', logo: false },
-		{ src: '/portfolioSamples/businessCards/troika%20businessCard.jpg',                                name: 'Troika Insurance',              cat: 'Business Card', logo: false },
-		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg',                     name: 'Equipe Farès',                  cat: 'Stationery',    logo: false },
+		{ src: '/portfolioSamples/brandIdentity/LAM%20-%20Lydia%20Tanios%20earthycolor.jpg',             name: 'LAM — Lydia Tanios',           cat: 'Logo',          gc: '1',          gr: '1',          logo: true  },
+		{ src: '/portfolioSamples/brandIdentity/Semolina%20LogoBranding.jpg',                             name: 'Semolina',                     cat: 'Logo',          gc: '2 / span 2', gr: '1',          logo: true  },
+		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%201.jpg',                                    name: 'Siralloc',                     cat: 'Logo',          gc: '4',          gr: '1',          logo: true  },
+		{ src: '/portfolioSamples/brandIdentity/SirallocLogo%202.jpg',                                    name: 'Siralloc',                     cat: 'Logo',          gc: '1',          gr: '2 / span 2', logo: true  },
+		{ src: '/portfolioSamples/brandIdentity/el-Hage%20Assurances%20newLogo.jpg',                      name: 'el-Hage Assurances',           cat: 'Logo',          gc: '2',          gr: '2',          logo: true  },
+		{ src: '/portfolioSamples/brandIdentity/it%20is%20Thyme%20-%20logo.jpg',                          name: 'it is Thyme',                  cat: 'Logo',          gc: '3 / span 2', gr: '2',          logo: true  },
+		{ src: '/portfolioSamples/businessCards/equipeFares%20businessCard%20simulation%20002.jpg',        name: 'Equipe Farès',                 cat: 'Business Card', gc: '2',          gr: '3',          logo: false },
+		{ src: '/portfolioSamples/brandIdentity/majdalani-logo.jpg',                                      name: 'Majdalani',                    cat: 'Logo',          gc: '3',          gr: '3',          logo: true  },
+		{ src: '/portfolioSamples/brandIdentity/oceanFrontier%20consultingLogo.jpg',                      name: 'Ocean Frontier Consulting',    cat: 'Logo',          gc: '4',          gr: '3',          logo: true  },
+		{ src: '/portfolioSamples/businessCards/majdalani%20MembershipCards%20simulation.jpg',             name: 'Majdalani',                    cat: 'Business Card', gc: '1 / span 2', gr: '4',          logo: false },
+		{ src: '/portfolioSamples/brandIdentity/troikaInsurance%20logo.svg',                              name: 'Troika Insurance',             cat: 'Logo',          gc: '3',          gr: '4',          logo: true  },
+		{ src: '/portfolioSamples/businessCards/troika%20businessCard.jpg',                                name: 'Troika Insurance',             cat: 'Business Card', gc: '4',          gr: '4',          logo: false },
+		{ src: '/portfolioSamples/letterHead/equipeFares%20envelop%20simulation.jpg',                     name: 'Equipe Farès',                 cat: 'Stationery',    gc: '1 / span 4', gr: '5',          logo: false },
 	];
-
-	let active = $state(0);
-	let filmstrip;
-
-	function select(i) {
-		active = i;
-		// scroll the active thumb into view
-		const el = filmstrip?.children[i];
-		el?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-	}
 </script>
 
 <section id="branding">
@@ -39,46 +29,25 @@
 				<span class="lw"><span class="lt"><em class="accent">speaks</em>.</span></span>
 			</h2>
 			<p class="section-desc para-in" use:inview={{ delay: 300 }}>
-				From concept to execution — logos, print, and stationery that carry your brand everywhere.
+				Hover to reveal. Every piece built with intention.
 			</p>
 		</div>
 
-		<!-- Spotlight -->
-		<div class="spotlight reveal" use:inview>
-			<div class="spotlight-img" class:logo={pieces[active].logo}>
-				{#key active}
-					<img
-						src={pieces[active].src}
-						alt={pieces[active].name}
-						in:fade={{ duration: 300 }}
-					/>
-				{/key}
-			</div>
-
-			<div class="spotlight-meta">
-				{#key active}
-					<span class="meta-cat" in:fade={{ duration: 250, delay: 60 }}>{pieces[active].cat}</span>
-					<span class="meta-name" in:fade={{ duration: 250, delay: 100 }}>{pieces[active].name}</span>
-				{/key}
-				<span class="meta-count">{String(active + 1).padStart(2,'0')} / {String(pieces.length).padStart(2,'0')}</span>
-			</div>
-		</div>
-
-		<!-- Filmstrip -->
-		<div class="filmstrip-wrap reveal" use:inview={{ delay: 200 }}>
-			<div class="filmstrip" bind:this={filmstrip}>
-				{#each pieces as piece, i}
-					<button
-						class="thumb"
-						class:active={i === active}
-						class:logo={piece.logo}
-						onclick={() => select(i)}
-						aria-label={piece.name}
-					>
-						<img src={piece.src} alt={piece.name} loading="lazy" />
-					</button>
-				{/each}
-			</div>
+		<div class="grid wall-in" use:inview>
+			{#each pieces as piece, i}
+				<div
+					class="cell"
+					class:logo={piece.logo}
+					style="grid-column:{piece.gc}; grid-row:{piece.gr}; --i:{i}"
+					use:inview={{ delay: i * 40 }}
+				>
+					<img src={piece.src} alt={piece.name} loading="lazy" />
+					<div class="overlay">
+						<span class="overlay-cat">{piece.cat}</span>
+						<span class="overlay-name">{piece.name}</span>
+					</div>
+				</div>
+			{/each}
 		</div>
 
 	</div>
@@ -115,112 +84,108 @@
 	.para-in:global(.inview-ready) { opacity: 0; transform: translateY(24px); filter: blur(4px); }
 	.para-in:global(.inview-ready.visible) { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-	/* ── Spotlight ───────────────────────────── */
-	.spotlight {
-		border-radius: 20px;
+	/* ── Grid ────────────────────────────────── */
+	.wall-in {
+		transition: opacity 0.5s ease;
+	}
+	.wall-in:global(.inview-ready) { opacity: 0; }
+	.wall-in:global(.inview-ready.visible) { opacity: 1; }
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-auto-rows: 200px;
+		gap: 4px;
+		border-radius: 16px;
 		overflow: hidden;
-		background: var(--color-surface);
-		margin-bottom: 12px;
-		position: relative;
 	}
 
-	.spotlight-img {
-		width: 100%;
-		height: clamp(320px, 52vw, 640px);
-		overflow: hidden;
-		position: relative;
+	/* Last row (letterhead) is taller */
+	.cell[style*="gr: '5'"],
+	.cell[style*="grid-row:5"] {
+		grid-row: 5;
+		height: 260px;
 	}
-	.spotlight-img img {
-		position: absolute;
-		inset: 0;
+
+	/* ── Cell ────────────────────────────────── */
+	.cell {
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+		background: var(--color-surface);
+		transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+	}
+	.cell:global(.inview-ready) { opacity: 0; transform: scale(0.94); }
+	.cell:global(.inview-ready.visible) { opacity: 1; transform: scale(1); }
+
+	.cell img {
 		width: 100%; height: 100%;
 		object-fit: cover;
 		display: block;
+		filter: grayscale(1) brightness(0.3) blur(1px);
+		transform: scale(1.04);
+		transition:
+			filter 0.55s cubic-bezier(0.16,1,0.3,1),
+			transform 0.55s cubic-bezier(0.16,1,0.3,1);
 	}
-	.spotlight-img.logo img {
+	.cell.logo img {
 		object-fit: contain;
-		padding: 48px;
+		padding: 20px;
 	}
 
-	.spotlight-meta {
-		display: flex;
-		align-items: center;
-		gap: 16px;
-		padding: 20px 28px;
-		border-top: 1px solid var(--color-border);
+	.cell:hover img {
+		filter: grayscale(0) brightness(1) blur(0);
+		transform: scale(1.08);
 	}
-	.meta-cat {
-		font-size: 0.7rem;
+	.cell.logo:hover img {
+		transform: scale(1.06);
+	}
+
+	/* ── Overlay label ───────────────────────── */
+	.overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-end;
+		padding: 18px 20px;
+		background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+	.cell:hover .overlay { opacity: 1; }
+
+	.overlay-cat {
+		font-size: 0.65rem;
 		font-weight: 700;
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
 		color: var(--color-accent);
-		background: rgba(168,85,247,0.1);
-		border: 1px solid rgba(168,85,247,0.25);
-		padding: 4px 12px;
-		border-radius: 999px;
+		margin-bottom: 4px;
 	}
-	.meta-name {
-		font-size: 1rem;
+	.overlay-name {
+		font-size: 0.92rem;
 		font-weight: 700;
+		color: #fff;
 		letter-spacing: -0.01em;
-		color: var(--color-text);
-		flex: 1;
-	}
-	.meta-count {
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: var(--color-text-dim);
-		letter-spacing: 0.06em;
-		font-variant-numeric: tabular-nums;
-	}
-
-	/* ── Filmstrip ───────────────────────────── */
-	.filmstrip-wrap {
-		overflow-x: auto;
-		scrollbar-width: none;
-	}
-	.filmstrip-wrap::-webkit-scrollbar { display: none; }
-
-	.filmstrip {
-		display: flex;
-		gap: 8px;
-		padding-bottom: 4px;
-	}
-
-	.thumb {
-		flex: 0 0 100px;
-		height: 72px;
-		border-radius: 10px;
-		overflow: hidden;
-		background: var(--color-surface);
-		border: 2px solid transparent;
-		cursor: pointer;
-		padding: 0;
-		transition: border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
-		opacity: 0.45;
-	}
-	.thumb:hover { opacity: 0.75; transform: translateY(-2px); }
-	.thumb.active {
-		border-color: var(--color-accent);
-		opacity: 1;
-		transform: translateY(-3px);
-	}
-	.thumb img {
-		width: 100%; height: 100%;
-		object-fit: cover;
-		display: block;
-		pointer-events: none;
-	}
-	.thumb.logo img {
-		object-fit: contain;
-		padding: 8px;
 	}
 
 	/* ── Mobile ──────────────────────────────── */
-	@media (max-width: 640px) {
-		.spotlight-img { height: 56vw; }
-		.spotlight-meta { padding: 14px 18px; gap: 10px; }
-		.thumb { flex: 0 0 76px; height: 56px; }
+	@media (max-width: 768px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+			grid-auto-rows: 150px;
+		}
+		.cell {
+			grid-column: auto !important;
+			grid-row: auto !important;
+		}
+		/* Always show overlay on mobile (no hover) */
+		.overlay { opacity: 1; }
+		.cell img {
+			filter: grayscale(0) brightness(0.75) blur(0);
+			transform: scale(1);
+		}
 	}
 </style>
