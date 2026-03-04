@@ -9,7 +9,13 @@ const config = {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				if (path === '/privacy-policy' || path === '/terms') return;
+				throw new Error(message);
+			}
+		}
 	}
 };
 
