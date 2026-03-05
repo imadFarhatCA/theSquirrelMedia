@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://thesquirrelmedia.com/sitemap.xml
+Sitemap: https://thesquirrelmedia.pages.dev/sitemap.xml

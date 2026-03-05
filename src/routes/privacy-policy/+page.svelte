@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Privacy Policy — the Squirrel Media</title>
 	<meta name="description" content="Privacy Policy for the Squirrel Media. Learn how we collect, use, and protect your personal information." />
-	<link rel="canonical" href="https://thesquirrelmedia.com/privacy-policy" />
+	<link rel="canonical" href="https://thesquirrelmedia.pages.dev/privacy-policy" />
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 

@@ -5,7 +5,7 @@
 	import BrandingPortfolio from '$lib/components/sections/BrandingPortfolio.svelte';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 
-	const siteUrl = 'https://thesquirrelmedia.com';
+	const siteUrl = 'https://thesquirrelmedia.pages.dev';
 	const ogImage = `${siteUrl}/og-image.jpg`;
 	const title = 'the Squirrel Media — Creative Web Design & Branding Agency';
 	const description = 'Creative agency specializing in web design, branding, and digital experiences. We craft identities and websites that stand out.';

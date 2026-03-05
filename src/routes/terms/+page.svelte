@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Terms & Conditions — the Squirrel Media</title>
 	<meta name="description" content="Terms and Conditions for the Squirrel Media. Read about our service agreements, intellectual property rights, and usage terms." />
-	<link rel="canonical" href="https://thesquirrelmedia.com/terms" />
+	<link rel="canonical" href="https://thesquirrelmedia.pages.dev/terms" />
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
