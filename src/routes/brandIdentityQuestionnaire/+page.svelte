@@ -198,16 +198,14 @@
 </html>`;
 
 		const payload = {
-			access_key: '833bb1d2-68ff-4c5b-9bb9-73d3a974b0e6',
-			subject:    `[${ref}] Brand Brief — ${companyName.trim()} (${industry})`,
-			from_name:  'The Squirrel Media — Brand Questionnaire',
-			replyto:    contactEmail.trim(),
-			message:    html,
-			html:       true,
+			subject:   `[${ref}] Brand Brief — ${companyName.trim()} (${industry})`,
+			from_name: 'The Squirrel Media — Brand Questionnaire',
+			replyto:   contactEmail.trim(),
+			message:   html,
 		};
 
 		try {
-			const res  = await fetch('https://api.web3forms.com/submit', {
+			const res  = await fetch('/api/submit', {
 				method:  'POST',
 				headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 				body:    JSON.stringify(payload),
