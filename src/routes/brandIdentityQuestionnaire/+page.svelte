@@ -203,6 +203,7 @@
 			from_name:  'The Squirrel Media — Brand Questionnaire',
 			replyto:    contactEmail.trim(),
 			message:    html,
+			html:       true,
 		};
 
 		try {
