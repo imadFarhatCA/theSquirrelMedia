@@ -1,8 +1,8 @@
 export const portfolioProjects = [
 	{
-		name: 'Troika Design',
-		aka: 'Creative Agency',
-		description: 'A bold creative agency website featuring immersive scroll animations, dynamic project showcases, and a refined gold-on-navy aesthetic that reflects the brand\'s premium positioning.',
+		name: 'Troika Insurance',
+		aka: 'Insurance Agency',
+		description: 'A premium insurance agency website featuring immersive scroll animations, dynamic service showcases, and a refined gold-on-navy aesthetic that reflects the brand\'s trust and authority.',
 		tech: ['Web Design', 'UI/UX', 'Branding', 'CSS Animation'],
 		desktopImage: '/images/portfolio/troika-desktop.jpg',
 		mobileImage: '/images/portfolio/troika-mobile.jpg',
