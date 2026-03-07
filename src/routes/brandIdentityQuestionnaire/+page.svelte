@@ -188,7 +188,7 @@
         <!-- Footer -->
         <tr><td style="background:#0d0d0d;border:1px solid #222222;border-top:1px solid #a855f7;border-radius:0 0 16px 16px;padding:24px 40px;text-align:center;">
           <p style="margin:0 0 4px;font-size:12px;color:#555;">Reply directly to this email to reach ${contactName.trim().split(' ')[0]}.</p>
-          <p style="margin:0;font-size:11px;color:#333;">Ref: ${ref} · the Squirrel Media · thesquirrelmedia.com</p>
+          <p style="margin:0;font-size:11px;color:#333;">Ref: ${ref} · the Squirrel Media · www.thesquirrelmedia.com</p>
         </td></tr>
 
       </table>
@@ -228,6 +228,11 @@
 <svelte:head>
 	<title>Brand Identity Questionnaire — The Squirrel Media</title>
 	<meta name="robots" content="noindex, nofollow" />
+	<meta property="og:title" content="Brand Identity Questionnaire — The Squirrel Media" />
+	<meta property="og:description" content="Help us understand your brand so we can create something that truly represents you. Takes about 5 minutes." />
+	<meta property="og:image" content="https://www.thesquirrelmedia.com/og-image.jpg" />
+	<meta property="og:url" content="https://www.thesquirrelmedia.com/brandIdentityQuestionnaire" />
+	<meta property="og:type" content="website" />
 </svelte:head>
 
 <main>
@@ -254,13 +259,13 @@
 	{:else}
 		<!-- ── Form ──────────────────────────────────────────── -->
 		<div class="form-wrap">
+			<a href="https://www.thesquirrelmedia.com" class="back-pill" target="_blank" rel="noopener">
+				← Back to Website
+			</a>
 			<div class="form-intro">
 				<div class="intro-header">
-					<a href="https://thesquirrelmedia.com" target="_blank" rel="noopener" class="logo-link">
+					<a href="https://www.thesquirrelmedia.com" target="_blank" rel="noopener" class="logo-link">
 						<img src="/images/logos/squirrel-logo.svg" alt="the Squirrel Media" class="intro-logo" />
-					</a>
-					<a href="https://thesquirrelmedia.com" class="back-link" target="_blank" rel="noopener">
-						← Back to Website
 					</a>
 				</div>
 				<span class="section-tag">Brand Identity Brief</span>
@@ -541,20 +546,31 @@
 	}
 	.logo-link:hover .intro-logo { opacity: 0.75; }
 
-	.back-link {
+	.back-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 8px 18px;
+		border-radius: 999px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
 		font-size: 0.8rem;
 		font-weight: 600;
 		color: var(--color-text-dim);
 		text-decoration: none;
-		transition: color 0.2s ease;
-		letter-spacing: 0.01em;
+		white-space: nowrap;
+		transition: color 0.2s ease, border-color 0.2s ease;
+		margin-bottom: 40px;
 	}
-	.back-link:hover { color: var(--color-accent); }
+	.back-pill:hover {
+		color: var(--color-text);
+		border-color: rgba(168, 85, 247, 0.4);
+	}
 
 	/* ── Form wrap ── */
 	.form-wrap {
 		width: min(720px, 92%);
-		padding: 60px 0 80px;
+		padding: 40px 0 80px;
 	}
 
 	.form-intro {
