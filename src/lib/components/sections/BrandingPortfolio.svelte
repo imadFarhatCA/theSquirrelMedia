@@ -24,21 +24,28 @@
 	];
 
 	const photography = [
-		{ src: '/portfolioSamples/jewleryPhotography/imadFarhat%20artDirector%20008%20Jewerly.jpg',      name: 'Jewellery'             },
-		{ src: '/portfolioSamples/productsPhotography/imadFarhat%20artDirector%20005%20photography.jpg', name: 'Products'              },
-		{ src: '/portfolioSamples/productsPhotography/itIsThyme%20Jar.jpg',                             name: 'it is Thyme'           },
-		{ src: '/portfolioSamples/productsPhotography/lesVignesDuMarje%20Natalie%20Bottle.jpg',         name: 'Les Vignes du Marje'   },
-		{ src: '/portfolioSamples/productsPhotography/semolinaCup.jpg',                                 name: 'Semolina'              },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20001.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20002.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20003.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20004.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20005.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20006.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20007.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/jewleryPhotography/jewleryShots%20008.jpg',                           name: 'Jewellery'                      },
+		{ src: '/portfolioSamples/productsPhotography/itIsThyme%20Jar.jpg',                             name: 'it is Thyme'                    },
+		{ src: '/portfolioSamples/productsPhotography/semolinaCup.jpg',                                 name: 'Semolina'                       },
+		{ src: '/portfolioSamples/productsPhotography/lesVignesDuMarje%20Natalie%20Bottle.jpg',         name: 'Les Vignes du Marje'            },
+		{ src: '/portfolioSamples/productsPhotography/lesVignesDuMarje%20redWine.jpg',                  name: 'Les Vignes du Marje — Red Wine' },
+		{ src: '/portfolioSamples/productsPhotography/limoncello%20du%20Marje.jpg',                     name: 'Limoncello du Marje'            },
+		{ src: '/portfolioSamples/productsPhotography/couventM%20lesVignesDuMarje.jpg',                 name: 'Couvent M — Les Vignes du Marje'},
 	];
 
 	const wearables = [
-		{ src: '/portfolioSamples/wearablesDesign/imadFarhat%20artDirector%20007%20wearables.jpg',  name: 'Wearables'             },
 		{ src: '/portfolioSamples/wearablesDesign/BASE1%20tshirt.jpg',                              name: 'BASE 1'                },
 		{ src: '/portfolioSamples/wearablesDesign/GUE%20teachForMAstery%20tshirt.jpg',              name: 'GUE — Teach For Mastery'},
 		{ src: '/portfolioSamples/wearablesDesign/GUEconference%20tshirt.jpg',                      name: 'GUE Conference'         },
 		{ src: '/portfolioSamples/wearablesDesign/GUEfitness%20tshirt.jpg',                         name: 'GUE Fitness'            },
-		{ src: '/portfolioSamples/wearablesDesign/poseidonTshirt.jpg',                              name: 'Poseidon'               },
-		{ src: '/portfolioSamples/wearablesDesign/youngDivers%20Program.jpg',                       name: 'Young Divers Program'   },
+		{ src: '/portfolioSamples/wearablesDesign/imadFarhat%20artDirector%20007%20wearables.jpg',  name: 'Wearables', wide: true  },
 	];
 
 	const categories = [
@@ -68,6 +75,7 @@
 			items: photography,
 			logo: false,
 			cols: 3,
+			masonry: true,
 			tags: ['#ProductPhotography', '#JewelleryPhotography', '#ArtDirection', '#CommercialPhoto'],
 		},
 		{
@@ -75,6 +83,7 @@
 			items: wearables,
 			logo: false,
 			cols: 4,
+			masonry: true,
 			tags: ['#Wearables', '#MerchDesign', '#ApparelDesign', '#Branding', '#Lifestyle'],
 		},
 	];
@@ -104,20 +113,33 @@
 				</div>
 
 				<!-- Grid -->
-				<div
-					class="reveal-grid"
-					class:logo-grid={cat.logo}
-					style="--cols:{cat.cols}"
-				>
-					{#each cat.items as item, i}
-						<div class="cell" class:logo={cat.logo} style="--i:{i}" use:inview={{ delay: i * 50 }}>
-							<img src={item.src} alt={item.name} loading="lazy" />
-							<div class="overlay">
-								<span class="overlay-name">{item.name}</span>
+				{#if cat.masonry}
+					<div class="masonry-grid" style="--cols:{cat.cols}">
+						{#each cat.items as item, i}
+							<div class="masonry-cell" class:wide={item.wide} use:inview={{ delay: i * 50 }}>
+								<img src={item.src} alt={item.name} loading="lazy" />
+								<div class="overlay">
+									<span class="overlay-name">{item.name}</span>
+								</div>
 							</div>
-						</div>
-					{/each}
-				</div>
+						{/each}
+					</div>
+				{:else}
+					<div
+						class="reveal-grid"
+						class:logo-grid={cat.logo}
+						style="--cols:{cat.cols}"
+					>
+						{#each cat.items as item, i}
+							<div class="cell" class:logo={cat.logo} style="--i:{i}" use:inview={{ delay: i * 50 }}>
+								<img src={item.src} alt={item.name} loading="lazy" />
+								<div class="overlay">
+									<span class="overlay-name">{item.name}</span>
+								</div>
+							</div>
+						{/each}
+					</div>
+				{/if}
 
 				<!-- Tags -->
 				<div class="tags">
@@ -290,15 +312,69 @@
 		border-color: rgba(168,85,247,0.4);
 	}
 
+	/* ── Masonry ─────────────────────────────── */
+	.masonry-grid {
+		columns: var(--cols);
+		gap: 4px;
+		column-gap: 4px;
+		border-radius: 12px;
+		overflow: hidden;
+	}
+
+	.masonry-cell {
+		break-inside: avoid;
+		position: relative;
+		overflow: hidden;
+		margin-bottom: 4px;
+		cursor: pointer;
+	}
+
+	.masonry-cell img {
+		width: 100%;
+		height: auto;
+		display: block;
+		filter: grayscale(1) brightness(0.32) blur(1.5px);
+		transform: scale(1.02);
+		transition: filter 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+	}
+
+	.masonry-cell.wide {
+		column-span: all;
+	}
+
+	.masonry-cell:hover img {
+		filter: grayscale(0) brightness(1) blur(0);
+		transform: scale(1.04);
+	}
+
+	.masonry-cell .overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: flex-end;
+		padding: 14px 16px;
+		background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+		opacity: 0;
+		transition: opacity 0.35s ease;
+	}
+	.masonry-cell:hover .overlay { opacity: 1; }
+
+	.masonry-cell:global(.inview-ready) { opacity: 0; transform: scale(0.96); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+	.masonry-cell:global(.inview-ready.visible) { opacity: 1; transform: scale(1); }
+
 	/* ── Mobile ──────────────────────────────── */
 	@media (max-width: 640px) {
 		/* All grids collapse to 2-col, including logos */
 		.reveal-grid { grid-template-columns: repeat(2, 1fr) !important; }
 		.reveal-grid:not(.logo-grid) { grid-auto-rows: 180px; }
-		/* Single-col items (photography, wearables) stay full-width */
+		/* Single-col items stay full-width */
 		.reveal-grid[style*="--cols:1"] { grid-template-columns: 1fr !important; }
 		/* Always reveal on mobile */
 		.cell img { filter: grayscale(0) brightness(0.85) blur(0); transform: scale(1); }
 		.overlay { opacity: 1; }
+		/* Masonry collapses to 2 columns on mobile */
+		.masonry-grid { columns: 2 !important; }
+		.masonry-cell img { filter: grayscale(0) brightness(0.85) blur(0); transform: scale(1); }
+		.masonry-cell .overlay { opacity: 1; }
 	}
 </style>
