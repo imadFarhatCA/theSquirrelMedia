@@ -24,12 +24,21 @@
 	];
 
 	const photography = [
-		{ src: '/portfolioSamples/jewleryPhotography/imadFarhat%20artDirector%20008%20Jewerly.jpg', name: 'Jewellery'             },
-		{ src: '/portfolioSamples/productsPhotography/imadFarhat%20artDirector%20005%20photography.jpg', name: 'Products'         },
+		{ src: '/portfolioSamples/jewleryPhotography/imadFarhat%20artDirector%20008%20Jewerly.jpg',      name: 'Jewellery'             },
+		{ src: '/portfolioSamples/productsPhotography/imadFarhat%20artDirector%20005%20photography.jpg', name: 'Products'              },
+		{ src: '/portfolioSamples/productsPhotography/itIsThyme%20Jar.jpg',                             name: 'it is Thyme'           },
+		{ src: '/portfolioSamples/productsPhotography/lesVignesDuMarje%20Natalie%20Bottle.jpg',         name: 'Les Vignes du Marje'   },
+		{ src: '/portfolioSamples/productsPhotography/semolinaCup.jpg',                                 name: 'Semolina'              },
 	];
 
 	const wearables = [
 		{ src: '/portfolioSamples/wearablesDesign/imadFarhat%20artDirector%20007%20wearables.jpg',  name: 'Wearables'             },
+		{ src: '/portfolioSamples/wearablesDesign/BASE1%20tshirt.jpg',                              name: 'BASE 1'                },
+		{ src: '/portfolioSamples/wearablesDesign/GUE%20teachForMAstery%20tshirt.jpg',              name: 'GUE — Teach For Mastery'},
+		{ src: '/portfolioSamples/wearablesDesign/GUEconference%20tshirt.jpg',                      name: 'GUE Conference'         },
+		{ src: '/portfolioSamples/wearablesDesign/GUEfitness%20tshirt.jpg',                         name: 'GUE Fitness'            },
+		{ src: '/portfolioSamples/wearablesDesign/poseidonTshirt.jpg',                              name: 'Poseidon'               },
+		{ src: '/portfolioSamples/wearablesDesign/youngDivers%20Program.jpg',                       name: 'Young Divers Program'   },
 	];
 
 	const categories = [
@@ -58,14 +67,14 @@
 			label: 'Photography',
 			items: photography,
 			logo: false,
-			cols: 1,
+			cols: 3,
 			tags: ['#ProductPhotography', '#JewelleryPhotography', '#ArtDirection', '#CommercialPhoto'],
 		},
 		{
 			label: 'Wearables & Merch',
 			items: wearables,
 			logo: false,
-			cols: 1,
+			cols: 4,
 			tags: ['#Wearables', '#MerchDesign', '#ApparelDesign', '#Branding', '#Lifestyle'],
 		},
 	];

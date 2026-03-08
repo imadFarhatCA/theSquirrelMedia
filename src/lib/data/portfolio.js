@@ -36,15 +36,6 @@ export const portfolioProjects = [
 		color: '#ee7700'
 	},
 	{
-		name: 'Control Panel',
-		aka: 'Web Dashboard',
-		description: 'A macOS-inspired admin dashboard built for managing web projects, clients, and digital assets. Dark glass aesthetic with a sidebar layout, segmented controls, and a fully custom component system.',
-		tech: ['Web App', 'UI/UX', 'Dashboard', 'SvelteKit'],
-		desktopImage: '/images/portfolio/controlpanel-desktop.png',
-		mobileImage: '/images/portfolio/controlpanel-mobile.png',
-		color: '#0a84ff'
-	},
-	{
 		name: 'DPV Snorkel',
 		aka: 'Base One Diving',
 		description: 'An adventure-driven landing page for underwater DPV snorkel experiences. Full-bleed ocean photography, booking integration, and a bold call-to-action design.',
