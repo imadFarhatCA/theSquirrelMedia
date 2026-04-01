@@ -3,6 +3,7 @@
 	import About from '$lib/components/sections/About.svelte';
 	import WebPortfolio from '$lib/components/sections/WebPortfolio.svelte';
 	import BrandingPortfolio from '$lib/components/sections/BrandingPortfolio.svelte';
+	import SocialMedia from '$lib/components/sections/SocialMedia.svelte';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 
 	const siteUrl = 'https://thesquirrelmedia.pages.dev';
@@ -74,5 +75,6 @@
 <Hero />
 <About />
 <WebPortfolio />
+<SocialMedia />
 <BrandingPortfolio />
 <ContactModal />
