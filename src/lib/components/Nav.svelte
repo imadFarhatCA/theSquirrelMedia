@@ -39,12 +39,6 @@
 
 <!-- Mobile overlay — outside <nav> to avoid backdrop-filter stacking context -->
 <div class="mobile-overlay" class:open={menuOpen}>
-	<button class="close-btn" onclick={() => menuOpen = false} aria-label="Close menu">
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-			<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-		</svg>
-	</button>
-
 	<div class="overlay-center">
 		<div class="overlay-nav">
 			<a href="#work" onclick={(e) => scrollTo(e, 'work')}><span>Digital</span></a>
@@ -116,7 +110,7 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		z-index: 100;
+		z-index: 300;
 		padding: 20px 0;
 		transition: all 0.4s ease;
 	}
@@ -321,33 +315,6 @@
 			background: var(--color-accent);
 			border-color: var(--color-accent);
 			color: #fff;
-		}
-		.close-btn {
-			position: absolute;
-			top: 16px;
-			right: 16px;
-			width: 44px;
-			height: 44px;
-			border-radius: 50%;
-			border: 1px solid rgba(255,255,255,0.15);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0;
-			color: var(--color-text-muted);
-			background: none;
-			cursor: pointer;
-			animation: popIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-			transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-		}
-		.close-btn:hover {
-			color: var(--color-text);
-			border-color: rgba(255,255,255,0.4);
-			background: rgba(255,255,255,0.08);
-		}
-		@keyframes popIn {
-			from { opacity: 0; transform: scale(0.6) rotate(-90deg); }
-			to   { opacity: 1; transform: scale(1) rotate(0deg); }
 		}
 	}
 </style>
