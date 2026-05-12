@@ -1,4 +1,4 @@
-// CSR-only — the audit content is fetched at runtime from /leads.json
+// Cannot prerender — slug is dynamic. SSR (default) means the worker renders
+// the shell on each request with absolute asset paths, so /audit/<anything>
+// resolves /_app/immutable/* correctly.
 export const prerender = false;
-export const ssr = false;
-export const csr = true;

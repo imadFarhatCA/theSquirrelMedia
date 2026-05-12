@@ -197,12 +197,12 @@
       .slice(0, 60);
   }
 
-  // Agent Assist worker — where visit hits get logged. Swap to prod URL on deploy.
-  const AGENT_API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-    ? 'http://localhost:8788'
-    : 'https://agent-assist.imad-farhat-c3c.workers.dev';
-
   onMount(async () => {
+    // Agent Assist worker — where visit hits get logged. Computed at runtime so SSR doesn't reference `location`.
+    const AGENT_API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+      ? 'http://localhost:8788'
+      : 'https://agent-assist.imad-farhat-c3c.workers.dev';
+
     const slug = $page.params.slug;
     const params = new URLSearchParams(window.location.search);
     lang = params.get('lang') === 'fr' ? 'fr' : 'en';
