@@ -1,0 +1,5 @@
+# SPA fallback for SvelteKit dynamic routes (e.g. /audit/[slug], /unsubscribe).
+# CF Pages does NOT auto-honor 200.html — this file tells it to.
+# Any request that doesn't match a static file falls back to 200.html with HTTP 200,
+# letting the client-side router mount the right page.
+/*    /200.html    200
