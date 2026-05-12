@@ -1,17 +1,11 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-cloudflare';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			// SPA fallback so dynamic routes like /audit/[slug] work without prerendering every slug.
-			// Existing pages still prerender; only routes that opt out (prerender=false) hit the fallback.
-			fallback: '200.html',
-			precompress: false,
-			strict: false
-		}),
+		// Cloudflare Pages adapter — handles dynamic routes via Pages Functions automatically.
+		// No more _redirects/SPA-fallback hacks; SvelteKit's router runs on the edge.
+		adapter: adapter(),
 		prerender: {
 			handleHttpError: 'warn',
 			handleMissingId: 'warn'
